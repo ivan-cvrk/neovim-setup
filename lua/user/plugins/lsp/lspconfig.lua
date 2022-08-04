@@ -66,7 +66,7 @@ local lsp_flags = {
 
 -- list of language servers for standard setup
 
-local language_servers = { 'pyright', 'clangd' }
+local language_servers = { 'pyright', 'clangd', 'tsserver' }
 
 for _, ls in ipairs(language_servers) do
 

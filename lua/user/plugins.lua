@@ -107,5 +107,7 @@ return require('packer').startup({
            run = ":TSUpdate",
         }
 
+        use('p00f/nvim-ts-rainbow')
+
     end,
 })
