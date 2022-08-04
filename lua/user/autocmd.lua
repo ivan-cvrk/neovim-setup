@@ -27,7 +27,7 @@ A.nvim_create_autocmd('BufEnter', {
     pattern = '*.txt',
     callback = function()
         if vim.bo.buftype == 'help' then
-            A.nvim_cmd({ cmd = 'wincmd', args = { 'L' } }, {})
+            A.nvim_command('wincmd L')
             vim.keymap.set('n', 'q', '<CMD>q<CR>', { buffer = 0 })
         end
     end,
