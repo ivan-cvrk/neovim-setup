@@ -54,5 +54,8 @@ map('x', '<C-k>', ":move '<-2<CR>gv=gv")
 map('o', 'A', ':<C-U>normal! mzggVG<CR>`z')
 map('x', 'A', ':<C-U>normal! ggVG<CR>')
 
+map('t', '<Esc>', '<C-\\><C-n>')
+map('t', '<C-[>', '<C-\\><C-n>')
+
 map('n', '<C-b>', ':NvimTreeToggle<CR>')
 map('n', '<C-n>', ':NvimTreeFocus<CR>')
