@@ -54,8 +54,13 @@ map('x', '<C-k>', ":move '<-2<CR>gv=gv")
 map('o', 'A', ':<C-U>normal! mzggVG<CR>`z')
 map('x', 'A', ':<C-U>normal! ggVG<CR>')
 
+-- Escape terminal to normal mode
 map('t', '<Esc>', '<C-\\><C-n>')
 map('t', '<C-[>', '<C-\\><C-n>')
 
+-- NvimTree toggles
 map('n', '<C-b>', ':NvimTreeToggle<CR>')
 map('n', '<C-n>', ':NvimTreeFocus<CR>')
+
+-- Call telescope
+map('n', '\\f', ':Telescope find_files<CR>')
