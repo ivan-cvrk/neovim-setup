@@ -4,7 +4,6 @@ if not status_ok then
     return
 end
 
-
 dashboard.custom_header = {
     [[                                                       ]],
     [[ ██╗    ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗]],
@@ -21,7 +20,8 @@ dashboard.default_executive = 'telecsope'
 
 dashboard.custom_center = {
     {
-        desc = 'Open   ',
+        icon = '  ',
+        desc = 'Open        ',
         action = 'exe \'NvimTreeOpen\' | exe \'wincmd p\' | exe \'q\''
     },
     {
