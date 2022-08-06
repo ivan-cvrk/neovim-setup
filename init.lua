@@ -18,7 +18,7 @@ local o = vim.o
 local g = vim.g
 
 -- general visual settigns
-o.guifont = 'JetBrainsMono Nerd Font Mono:h12'
+o.guifont = 'Jetbrains Mono:h12'
 
 vim.cmd 'colorscheme onedarker'
 
