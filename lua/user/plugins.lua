@@ -15,7 +15,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
     vim.cmd [[packadd packer.nvim]]
 end
 
-
 -- Automatically run :PackerCompile whenever plugins.lua is updated with an autocommand:
 vim.api.nvim_create_autocmd('BufWritePost', {
     group = vim.api.nvim_create_augroup('PACKER', { clear = true }),
@@ -106,6 +105,14 @@ return require('packer').startup({
         use('hrsh7th/nvim-cmp')
 
         use('hrsh7th/cmp-nvim-lsp')
+
+        use('hrsh7th/cmp-nvim-lua')
+
+        use('hrsh7th/cmp-path')
+
+        use('hrsh7th/cmp-buffer')
+
+        use('onsails/lspkind.nvim')
 
         use('L3MON4D3/LuaSnip')
 
