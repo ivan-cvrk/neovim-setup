@@ -11,6 +11,7 @@ require('user.plugins.autopairs')
 require('user.plugins.lualine')
 require('user.plugins.nvim-tree')
 require('user.plugins.telescope')
+require('user.plugins.dashboard')
 
 -- visual settings
 local o = vim.o

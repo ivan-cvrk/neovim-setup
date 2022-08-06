@@ -1,4 +1,3 @@
-
 local fn = vim.fn
 
 -- Automatically install packer
@@ -55,16 +54,17 @@ return require('packer').startup({
 
         use('nvim-lua/plenary.nvim')
 
+        use('nvim-lua/popup.nvim')
+
         ----------------------
         --     Style        --
         ----------------------
 
         use('joshdick/onedark.vim')
 
-
         use {
-          'nvim-lualine/lualine.nvim',
-          requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+            'nvim-lualine/lualine.nvim',
+            requires = { 'kyazdani42/nvim-web-devicons', opt = true }
         }
 
         ----------------------
@@ -80,14 +80,17 @@ return require('packer').startup({
         }
 
         use {
-          'nvim-telescope/telescope.nvim', tag = '0.1.x',
-          requires = { {'nvim-lua/plenary.nvim'} }
+            'nvim-telescope/telescope.nvim', tag = '0.1.x',
+            requires = { { 'nvim-lua/plenary.nvim' }, { 'BurntSushi/ripgrep' } }
         }
+
+        use('nvim-telescope/telescope-project.nvim')
+
+        use('glepnir/dashboard-nvim')
 
         ----------------------
         -- Language Servers --
         ----------------------
-
 
         use('neovim/nvim-lspconfig')
 
@@ -103,12 +106,11 @@ return require('packer').startup({
         --     Editing     ---
         ----------------------
 
-
         use('windwp/nvim-autopairs')
 
         use {
             'nvim-treesitter/nvim-treesitter',
-           run = ":TSUpdate",
+            run = ":TSUpdate",
         }
 
         use('p00f/nvim-ts-rainbow')
