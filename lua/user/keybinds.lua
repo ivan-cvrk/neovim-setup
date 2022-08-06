@@ -56,7 +56,7 @@ map('x', 'A', ':<C-U>normal! ggVG<CR>')
 
 -- Escape terminal to normal mode
 map('t', '<Esc>', '<C-\\><C-n>')
-map('t', '<C-[>', '<C-\\><C-n>')
+map('t', '<C-o>', '<C-\\><C-n>')
 
 
 -- Symvols-outline
