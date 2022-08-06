@@ -18,14 +18,15 @@ local o = vim.o
 local g = vim.g
 
 -- general visual settigns
-o.guifont = "JetBrainsMono Nerd Font Mono:h12"
-vim.cmd "colorscheme onedark"
+o.guifont = 'JetBrainsMono Nerd Font Mono:h12'
 
+vim.cmd 'colorscheme ayu'
+vim.cmd 'let ayucolor = \'dark\''
 
 -- Neovide settings 
 if g.neovide then
-    g.neovide_cursor_vfx_mode = "pixiedust"
+    g.neovide_cursor_vfx_mode = 'pixiedust'
     g.neovide_cursor_vfx_particle_density = 11.0
-    vim.api.nvim_set_keymap('n', '<F11>', ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", {})
+    vim.api.nvim_set_keymap('n', '<F11>', ':let g:neovide_fullscreen = !g:neovide_fullscreen<CR>', {})
 end
 

@@ -60,6 +60,13 @@ return require('packer').startup({
         --     Style        --
         ----------------------
 
+        use {
+            'lunarvim/onedarker.nvim',
+            branch = 'freeze'
+        }
+
+        use('ayu-theme/ayu-vim')
+
         use('joshdick/onedark.vim')
 
         use {
