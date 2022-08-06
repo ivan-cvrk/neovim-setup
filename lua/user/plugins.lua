@@ -78,6 +78,8 @@ return require('packer').startup({
         --    Navigation    --
         ----------------------
 
+        use('simrat39/symbols-outline.nvim')
+
         use {
             'kyazdani42/nvim-tree.lua',
             requires = {

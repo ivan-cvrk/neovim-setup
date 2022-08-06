@@ -58,6 +58,10 @@ map('x', 'A', ':<C-U>normal! ggVG<CR>')
 map('t', '<Esc>', '<C-\\><C-n>')
 map('t', '<C-[>', '<C-\\><C-n>')
 
+
+-- Symvols-outline
+map('n', '<F2>', ':SymbolsOutline<CR>')
+
 -- NvimTree toggles
 map('n', '<C-b>', ':NvimTreeToggle<CR>')
 map('n', '<C-n>', ':NvimTreeFocus<CR>')
