@@ -68,3 +68,4 @@ map('n', '<C-n>', ':NvimTreeFocus<CR>')
 
 -- Call telescope
 map('n', '\\f', ':Telescope find_files<CR>')
+map('n', '\\t', ':Telescope<CR>')
