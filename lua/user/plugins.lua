@@ -126,10 +126,12 @@ return require('packer').startup({
 
         use {
             'nvim-treesitter/nvim-treesitter',
-            run = ":TSUpdate",
+            run = ':TSUpdate',
         }
 
         use('p00f/nvim-ts-rainbow')
+
+        use('danymat/neogen')
 
     end,
 })

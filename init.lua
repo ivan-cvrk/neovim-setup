@@ -7,6 +7,7 @@ require('user.plugins.lsp.lspconfig')
 require('user.plugins.lsp.autocomplete')
 
 require('user.plugins.treesitter')
+require('user.plugins.neogen')
 require('user.plugins.lspkind')
 require('user.plugins.autopairs')
 require('user.plugins.lualine')
@@ -30,4 +31,3 @@ if g.neovide then
 
     vim.api.nvim_set_keymap('n', '<F11>', ':let g:neovide_fullscreen = !g:neovide_fullscreen<CR>', {})
 end
-

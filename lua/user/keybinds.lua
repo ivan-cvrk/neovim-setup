@@ -58,6 +58,8 @@ map('x', 'A', ':<C-U>normal! ggVG<CR>')
 map('t', '<Esc>', '<C-\\><C-n>')
 map('t', '<C-o>', '<C-\\><C-n>')
 
+-- Execute current file
+map('n', '\\x', ':so %<CR>')
 
 -- Symvols-outline
 map('n', '<F2>', ':SymbolsOutline<CR>')
@@ -69,3 +71,6 @@ map('n', '<C-n>', ':NvimTreeFocus<CR>')
 -- Call telescope
 map('n', '\\f', ':Telescope find_files<CR>')
 map('n', '\\t', ':Telescope<CR>')
+
+-- Neogen create doc
+map('n', '\\d', ':lua require\'neogen\'.generate()<CR>')
