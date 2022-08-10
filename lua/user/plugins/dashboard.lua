@@ -21,12 +21,12 @@ dashboard.default_executive = 'telecsope'
 dashboard.custom_center = {
     {
         icon = '  ',
-        desc = 'Open        ',
+        desc = 'Open         ',
         action = 'exe \'NvimTreeOpen\' | exe \'wincmd p\' | exe \'q\''
     },
     {
         icon = '  ',
-        desc = 'Find file   ',
+        desc = 'Find file    ',
         action = 'Telescope find_files',
     },
     {
@@ -42,7 +42,7 @@ dashboard.custom_center = {
     {
         icon = '  ',
         desc = 'Config       ',
-        action = 'edit ~/.config/nvim',
+        action = 'edit ' .. vim.fn.stdpath 'config',
     },
 }
 
