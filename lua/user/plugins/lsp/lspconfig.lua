@@ -90,11 +90,9 @@ lspconfig['sumneko_lua'].setup {
             },
             diagnostics = {
                 -- Get the language server to recognize the `vim` global
-                globals = { 'vim' },
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file("", true),
             },
             -- Do not send telemetry data containing a randomized but unique identifier
             telemetry = {
@@ -103,7 +101,46 @@ lspconfig['sumneko_lua'].setup {
         },
 
     },
-    on_attach = on_attach,
+    on_attach = function(client, bufnr)
+        -- first call default on attach
+        on_attach(client, bufnr)
+
+        local client_cfg = client.config
+
+        -- If working directory has nvim in name it is considered as nvim lua file
+        -- and enviroment for working with vim has to be set.
+        if client_cfg.root_dir and client_cfg.root_dir:match('nvim') then
+
+            -- Attach nvim-lua sources for autocompletion
+            require('cmp').setup.buffer {
+                sources = {
+                    { name = 'nvim_lua' },
+                }
+            }
+
+            -- If neccesary change client settings
+            -- change is considered needed when there is no 'vim' global
+            if not client_cfg.settings.Lua.diagnostics.globals or
+               not vim.tbl_contains(client_cfg.settings.Lua.diagnostics.globals, 'vim')
+            then
+                local new_settings = vim.tbl_deep_extend('force', client.config.settings, {
+                    Lua = {
+                        diagnostics = {
+                            globals = { 'vim' },
+                        },
+                        workspace = {
+                            library = vim.api.nvim_get_runtime_file("", true),
+                        },
+                    },
+                })
+
+                client.config.settings = new_settings
+                client.notify('workspace/didChangeConfiguration')
+                vim.notify('Lua is now in neovim mode.')
+            end
+
+        end
+    end,
     flags = lsp_flags,
     capabilities = capabilities,
 }
