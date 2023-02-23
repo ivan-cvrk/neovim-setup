@@ -20,14 +20,7 @@ local o = vim.o
 local g = vim.g
 
 -- general visual settigns
-o.guifont = 'Jetbrains Mono:h12'
+-- o.guifont = 'FiraCode:h12'
 
-vim.cmd 'colorscheme onedarker'
+vim.cmd 'colorscheme onedark'
 
--- Neovide settings 
-if g.neovide then
-    g.neovide_cursor_vfx_mode = 'pixiedust'
-    g.neovide_cursor_vfx_particle_density = 11.0
-
-    vim.api.nvim_set_keymap('n', '<F11>', ':let g:neovide_fullscreen = !g:neovide_fullscreen<CR>', {})
-end

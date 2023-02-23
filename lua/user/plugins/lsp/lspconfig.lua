@@ -14,7 +14,7 @@ end
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -80,7 +80,7 @@ end
 
 -- Special requirements, manual setup
 
-lspconfig['sumneko_lua'].setup {
+lspconfig['lua_ls'].setup {
     settings = {
 
         Lua = {
