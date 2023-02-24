@@ -94,7 +94,14 @@ return require('packer').startup({
 
         use('nvim-telescope/telescope-project.nvim')
 
-        use('glepnir/dashboard-nvim')
+        use {
+          'glepnir/dashboard-nvim',
+          event = 'VimEnter',
+          config = function()
+            require('user.plugins.dashboard')
+          end,
+          requires = { 'nvim-tree/nvim-web-devicons' }
+        }
 
         ----------------------
         -- Language Servers --

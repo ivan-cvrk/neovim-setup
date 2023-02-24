@@ -13,14 +13,6 @@ require('user.plugins.autopairs')
 require('user.plugins.lualine')
 require('user.plugins.nvim-tree')
 require('user.plugins.telescope')
-require('user.plugins.dashboard')
-
--- visual settings
-local o = vim.o
-local g = vim.g
-
--- general visual settigns
--- o.guifont = 'FiraCode:h12'
 
 vim.cmd 'colorscheme onedark'
 
