@@ -13,6 +13,7 @@ require('user.plugins.autopairs')
 require('user.plugins.lualine')
 require('user.plugins.nvim-tree')
 require('user.plugins.telescope')
+require('user.plugins.symbols-outline')
 
 vim.cmd 'colorscheme onedark'
 
