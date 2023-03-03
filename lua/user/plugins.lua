@@ -15,14 +15,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
     vim.cmd [[packadd packer.nvim]]
 end
 
--- Automatically run :PackerCompile whenever plugins.lua is updated with an autocommand:
-vim.api.nvim_create_autocmd('BufWritePost', {
-    group = vim.api.nvim_create_augroup('PACKER', { clear = true }),
-    pattern = 'plugins.lua',
-    command = 'source <afile> | PackerSync',
-})
-
-
 -- Use protected call so we don't error on first use
 local status_ok, packer = pcall(require, 'packer')
 if not status_ok then
@@ -130,6 +122,8 @@ return require('packer').startup({
         ----------------------
 
         use('windwp/nvim-autopairs')
+
+        use('windwp/nvim-ts-autotag')
 
         use {
             'nvim-treesitter/nvim-treesitter',
