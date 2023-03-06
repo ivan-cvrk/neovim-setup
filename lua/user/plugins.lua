@@ -62,7 +62,9 @@ return require('packer').startup({
 
         use {
             'nvim-lualine/lualine.nvim',
-            requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+            requires = {
+                'nvim-tree/nvim-web-devicons',
+            }
         }
 
         ----------------------
@@ -72,11 +74,11 @@ return require('packer').startup({
         use('simrat39/symbols-outline.nvim')
 
         use {
-            'kyazdani42/nvim-tree.lua',
-            requires = {
-                'kyzdani42/nvim-web-devicons'
-            },
-            tag = 'nightly'
+          'nvim-tree/nvim-tree.lua',
+          requires = {
+            'nvim-tree/nvim-web-devicons',
+          },
+          tag = 'nightly'
         }
 
         use {
@@ -88,7 +90,6 @@ return require('packer').startup({
 
         use {
           'glepnir/dashboard-nvim',
-          event = 'VimEnter',
           config = function()
             require('user.plugins.dashboard')
           end,
