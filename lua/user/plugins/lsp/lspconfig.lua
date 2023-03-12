@@ -66,7 +66,7 @@ local lsp_flags = {
 
 -- list of language servers for standard setup
 
-local language_servers = { 'pyright', 'clangd', 'tsserver', 'html', 'emmet_ls' }
+local language_servers = { 'pyright', 'clangd', 'tsserver', 'html', 'emmet_ls', 'cssls' }
 
 for _, ls in ipairs(language_servers) do
 
@@ -107,9 +107,11 @@ lspconfig['lua_ls'].setup {
 
         local client_cfg = client.config
 
+        local file_path = vim.api.nvim_buf_get_name(bufnr)
+
         -- If working directory has nvim in name it is considered as nvim lua file
         -- and enviroment for working with vim has to be set.
-        if client_cfg.root_dir and client_cfg.root_dir:match('nvim') then
+        if client_cfg.root_dir and client_cfg.root_dir:match('nvim') or file_path:match('nvim') then
 
             -- Attach nvim-lua sources for autocompletion
             require('cmp').setup.buffer {
