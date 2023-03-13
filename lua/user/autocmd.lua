@@ -19,7 +19,7 @@ vim.filetype.add({
     },
 })
 
-local num_au = A.nvim_create_augroup('QuitHelp', { clear = true })
+local num_au = A.nvim_create_augroup('custom_commands', { clear = true })
 
 -- Open help vertically and press q to exit
 A.nvim_create_autocmd('BufEnter', {
