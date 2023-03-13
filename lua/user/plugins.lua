@@ -48,7 +48,7 @@ return require('packer').startup({
         use('nvim-lua/popup.nvim')
 
         ----------------------
-        --     Style        --
+        --      Style       --
         ----------------------
 
         use {
@@ -117,6 +117,18 @@ return require('packer').startup({
         use('L3MON4D3/LuaSnip')
 
         use('saadparwaiz1/cmp_luasnip')
+
+        ----------------------
+        --    Debugging    ---
+        ----------------------
+
+        use('mfussenegger/nvim-dap')
+
+        use('rcarriga/nvim-dap-ui')
+
+        use('nvim-telescope/telescope-dap.nvim')
+
+        use('theHamsta/nvim-dap-virtual-text')
 
         ----------------------
         --     Editing     ---

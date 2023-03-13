@@ -15,6 +15,7 @@ require('user.plugins.telescope')
 require('user.plugins.lualine')
 require('user.plugins.nvim-tree')
 require('user.plugins.symbols-outline')
+require('user.plugins.nvim-dap')
 
 vim.cmd 'colorscheme onedark'
 
