@@ -114,11 +114,10 @@ lspconfig['lua_ls'].setup {
         if client_cfg.root_dir and client_cfg.root_dir:match('nvim') or file_path:match('nvim') then
 
             -- Attach nvim-lua sources for autocompletion
-            require('cmp').setup.buffer {
-                sources = {
-                    { name = 'nvim_lua' },
-                }
-            }
+            local cmp = require('cmp')
+            local cmp_config = cmp.get_config()
+            table.insert(cmp_config.sources, { name = 'nvim_lua' })
+            cmp.setup.buffer(cmp_config)
 
             -- If neccesary change client settings
             -- change is considered needed when there is no 'vim' global
