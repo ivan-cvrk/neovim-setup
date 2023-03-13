@@ -1,3 +1,5 @@
+local myfuncs = require('user.myfuncs')
+
 local function map(m, k, v)
     vim.api.nvim_set_keymap(m, k, v, { silent = true, noremap = true })
 end
@@ -31,9 +33,6 @@ map('x', '<C-k>', ":move '<-2<CR>gv=gv")
 -- Escape terminal to normal mode
 map('t', '<Esc>', '<C-\\><C-n>')
 
--- Execute current file
-map('n', '\\x', ':so %<CR>')
-
 -- Symvols-outline
 map('n', '<F2>', ':SymbolsOutline<CR>')
 
@@ -47,3 +46,6 @@ map('n', '\\t', ':Telescope<CR>')
 
 -- Neogen create doc
 map('n', '\\d', ':lua require\'neogen\'.generate()<CR>')
+
+vim.keymap.set('n', '\\x', myfuncs.execute_nvim_files_in_dir, { remap = false })
+

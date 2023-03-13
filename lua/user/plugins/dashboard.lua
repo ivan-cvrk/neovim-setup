@@ -12,12 +12,12 @@ dashboard.setup {
   config = {
     week_header = {
       enable = true,
-    },    
+    },
     center = {
       {
          icon = '  ',
          desc = 'Open      ',
-         action = 'exe \'NvimTreeOpen\' | exe \'wincmd p\' | exe \'q\'',
+         action = 'exe \'NvimTreeOpen\' | exe \'wincmd p\' | exe \'q\' | lua vim.schedule(function() require(\'user.myfuncs\').execute_nvim_files_in_dir() end)',
          icon_hl = 'Type',
          desc_hl = 'Label',
       },
