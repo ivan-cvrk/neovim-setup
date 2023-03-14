@@ -11,7 +11,7 @@ cssls
 -- debuggers
 
 debugpy (pip install debugpy)
-vscode-cpptools (https://github.com/microsoft/vscode-cpptools/releases, directory: /opt/cpptools-linux/)
+vscode-cpptools (https://github.com/microsoft/vscode-cpptools/releases, directory: ~/dev/cpptools-linux/)
 
 -- external programs
 

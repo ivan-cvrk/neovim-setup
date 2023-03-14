@@ -48,6 +48,8 @@ local function on_exit()
     end
 end
 
+vim.keymap.set('n', '\\du', on_exit)
+
 dap.listeners.after.event_initialized.dapui_config = function()
     nvim_tree_open = require('nvim-tree.view').is_visible()
     require('nvim-tree.api').tree.close()
@@ -73,7 +75,7 @@ require 'dap-python'.setup('/usr/bin/python3')
 dap.adapters.cppdbg = {
     id = 'cppdbg',
     type = 'executable',
-    command = '/opt/cpptools-linux/extension/debugAdapters/bin/OpenDebugAD7',
+    command = vim.fs.normalize('~/dev/microsoft/cpptools-linux/extension/debugAdapters/bin/OpenDebugAD7'),
 }
 
 dap.configurations.cpp = {
