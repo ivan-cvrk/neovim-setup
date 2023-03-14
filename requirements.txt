@@ -1,0 +1,18 @@
+-- language servers
+
+lua_ls
+pyright
+typescript-language-server
+clangd
+html
+emmet_ls
+cssls
+
+-- debuggers
+
+debugpy (pip install debugpy)
+vscode-cpptools (https://github.com/microsoft/vscode-cpptools/releases, directory: /opt/cpptools-linux/)
+
+-- external programs
+
+ripgrep

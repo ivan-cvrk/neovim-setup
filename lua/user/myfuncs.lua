@@ -3,9 +3,13 @@ local M = {}
 function M.execute_nvim_files_in_dir()
     local msg = ''
     for n, t in vim.fs.dir(vim.loop.cwd()) do
-        if n:match('nvim') and t == 'file' then
-            vim.cmd.source(n)
-            msg = msg .. 'Executed script: ' .. n .. '\n'
+        if n == '.nvim' and t == 'directory' then
+            for fn, ft in vim.fs.dir('.nvim') do
+                if ft == 'file' then
+                    vim.cmd.source('.nvim/'..fn)
+                end
+                msg = msg .. 'Executed script: ' .. n .. '/' .. fn .. '\n'
+            end
         end
     end
     vim.notify(msg)

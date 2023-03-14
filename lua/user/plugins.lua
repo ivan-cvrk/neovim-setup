@@ -130,6 +130,8 @@ return require('packer').startup({
 
         use('theHamsta/nvim-dap-virtual-text')
 
+        use('mfussenegger/nvim-dap-python')
+
         ----------------------
         --     Editing     ---
         ----------------------

@@ -22,8 +22,8 @@ local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>dd', vim.diagnostic.disable, opts)
 vim.keymap.set('n', '<space>d', vim.diagnostic.enable, opts)
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '<C-;>', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', '<C-\'>', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', '<space>p', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', '<space>n', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
