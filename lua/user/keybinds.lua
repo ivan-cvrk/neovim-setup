@@ -43,6 +43,7 @@ map('n', '<C-n>', ':NvimTreeFocus<CR>')
 -- Call telescope
 map('n', '\\f', ':Telescope find_files<CR>')
 map('n', '\\t', ':Telescope<CR>')
+map('n', '\\q', ':Telescope buffers<CR>')
 
 -- Neogen create doc
 map('n', '\\d', ':lua require\'neogen\'.generate()<CR>')
