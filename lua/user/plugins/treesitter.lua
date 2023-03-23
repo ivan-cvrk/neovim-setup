@@ -11,7 +11,7 @@ configs.setup({
     autopairs = {
         enable = true,
     },
-    indent = { enable = true },
+    indent = { enable = true, disable = { 'html' } },
     rainbow = {
         enable = true,
         -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for

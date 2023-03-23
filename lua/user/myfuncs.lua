@@ -5,10 +5,10 @@ function M.execute_nvim_files_in_dir()
     for n, t in vim.fs.dir(vim.loop.cwd()) do
         if n == '.nvim' and t == 'directory' then
             for fn, ft in vim.fs.dir('.nvim') do
-                if ft == 'file' then
-                    vim.cmd.source('.nvim/'..fn)
+                if ft == 'file' and string.sub(fn, -4, -1) == '.lua' then
+                    vim.cmd.source('.nvim/'.. fn)
+                    msg = msg .. 'Executed script: ' .. n .. '/' .. fn .. '\n'
                 end
-                msg = msg .. 'Executed script: ' .. n .. '/' .. fn .. '\n'
             end
         end
     end
