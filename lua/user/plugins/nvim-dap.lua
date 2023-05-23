@@ -49,6 +49,7 @@ local function on_exit()
     if nvim_tree_open then
         require('nvim-tree.api').tree.open()
     end
+    require 'nvim-dap-virtual-text'.refresh()
 end
 
 vim.keymap.set('n', '\\du', on_exit)
