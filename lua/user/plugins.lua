@@ -25,7 +25,7 @@ end
 packer.init {
     display = {
         open_fn = function()
-            return require('packer.util').float { border = 'single' }
+            return require('packer.util').float { border = 'double' }
         end
     }
 }
@@ -74,11 +74,11 @@ return require('packer').startup({
         use('simrat39/symbols-outline.nvim')
 
         use {
-          'nvim-tree/nvim-tree.lua',
-          requires = {
-            'nvim-tree/nvim-web-devicons',
-          },
-          tag = 'nightly'
+            'nvim-tree/nvim-tree.lua',
+            requires = {
+                'nvim-tree/nvim-web-devicons',
+            },
+            tag = 'nightly'
         }
 
         use {
@@ -89,11 +89,11 @@ return require('packer').startup({
         use('nvim-telescope/telescope-project.nvim')
 
         use {
-          'glepnir/dashboard-nvim',
-          config = function()
-            require('user.plugins.dashboard')
-          end,
-          requires = { 'nvim-tree/nvim-web-devicons' }
+            'glepnir/dashboard-nvim',
+            config = function()
+                require('user.plugins.dashboard')
+            end,
+            requires = { 'nvim-tree/nvim-web-devicons' }
         }
 
         ----------------------
@@ -148,6 +148,5 @@ return require('packer').startup({
         use('p00f/nvim-ts-rainbow')
 
         use('danymat/neogen')
-
     end,
 })
