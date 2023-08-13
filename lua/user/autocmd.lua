@@ -40,3 +40,13 @@ A.nvim_create_autocmd('TextYankPost', {
         vim.highlight.on_yank({ higroup = 'Visual', timeout = 120 })
     end,
 })
+
+A.nvim_create_autocmd('BufEnter', {
+    group = num_au,
+    desc = 'Use tab in Makefile',
+    callback = function(opt)
+        if vim.bo[opt.buf].filetype == 'makefile' then
+            vim.cmd.setlocal 'noexpandtab'
+        end
+    end
+})
