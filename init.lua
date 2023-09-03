@@ -3,7 +3,7 @@ require('user.autocmd')
 require('user.plugins')
 require('user.keybinds')
 
-vim.cmd.colorscheme 'ayu'
+vim.cmd.colorscheme 'onedark'
 
 require('user.plugins.lsp.lspconfig')
 require('user.plugins.lsp.autocomplete')
