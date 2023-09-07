@@ -145,7 +145,7 @@ return require('packer').startup({
             run = ':TSUpdate',
         }
 
-        use('p00f/nvim-ts-rainbow')
+        use('HiPhish/nvim-ts-rainbow2')
 
         use('danymat/neogen')
     end,
