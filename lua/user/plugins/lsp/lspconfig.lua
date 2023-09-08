@@ -1,16 +1,9 @@
 -- Setup module
 
 -- Lsp configuration
-local status_ok, lspconfig = pcall(require, 'lspconfig')
-if not status_ok then
-    return
-end
-
+local lspconfig = require 'lspconfig'
 -- Additional autocomplete capabilities
-local status_cmp_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-if not status_cmp_ok then
-    return
-end
+local cmp_nvim_lsp = require 'cmp_nvim_lsp'
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()

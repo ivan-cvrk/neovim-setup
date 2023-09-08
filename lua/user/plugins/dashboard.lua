@@ -1,8 +1,5 @@
 -- Setup module
-local status_ok, dashboard = pcall(require, 'dashboard')
-if not status_ok then
-  return
-end
+local dashboard = require('dashboard')
 
 vim.api.nvim_set_hl(0, 'DashboardHeader', { link = 'Function' })
 vim.api.nvim_set_hl(0, 'DashboardFooter', { link = 'String'} )

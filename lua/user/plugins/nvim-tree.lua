@@ -1,8 +1,5 @@
 -- Setup module
-local status_ok, ntree = pcall(require, 'nvim-tree')
-if not status_ok then
-    return
-end
+local ntree = require('nvim-tree')
 
 ntree.setup({
     view = {

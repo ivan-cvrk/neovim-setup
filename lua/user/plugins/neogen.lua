@@ -1,8 +1,5 @@
 -- Setup module
-local status_ok, neogen = pcall(require, 'neogen')
-if not status_ok then
-    return
-end
+local neogen = require('neogen')
 
 neogen.setup {
     snippet_engine = 'luasnip'

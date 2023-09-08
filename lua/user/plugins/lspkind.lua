@@ -1,8 +1,5 @@
 -- Setup Module
-local status_ok, lspkind = pcall(require, 'lspkind')
-if not status_ok then
-    return
-end
+local lspkind = require('lspkind')
 
 lspkind.init({
     -- DEPRECATED (use mode instead): enables text annotations
