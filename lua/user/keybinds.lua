@@ -37,8 +37,8 @@ map('t', '<Esc>', '<C-\\><C-n>')
 map('n', '<F2>', ':SymbolsOutline<CR>')
 
 -- NvimTree toggles
-map('n', '<C-m>', ':NvimTreeToggle<CR>')
-map('n', '<C-n>', ':NvimTreeFocus<CR>')
+map('n', '<C-n>', ':NvimTreeToggle<CR>')
+map('n', '<C-m>', ':NvimTreeFocus<CR>')
 
 -- Call telescope
 map('n', '\\f', ':Telescope find_files<CR>')
