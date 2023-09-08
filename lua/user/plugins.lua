@@ -25,13 +25,13 @@ end
 packer.init {
     display = {
         open_fn = function()
-            return require('packer.util').float { border = 'double' }
+            return require('packer.util').float { border = 'single' }
         end
     }
 }
 
 
-return require('packer').startup({
+return packer.startup({
     function(use)
         ---------------------
         -- Package Manager --
@@ -144,6 +144,8 @@ return require('packer').startup({
             'nvim-treesitter/nvim-treesitter',
             run = ':TSUpdate',
         }
+
+        use('nvim-treesitter/playground')
 
         use('HiPhish/nvim-ts-rainbow2')
 
