@@ -37,7 +37,7 @@ map('t', '<Esc>', '<C-\\><C-n>')
 map('n', '<F2>', ':SymbolsOutline<CR>')
 
 -- NvimTree toggles
-map('n', '<C-b>', ':NvimTreeToggle<CR>')
+map('n', '<C-m>', ':NvimTreeToggle<CR>')
 map('n', '<C-n>', ':NvimTreeFocus<CR>')
 
 -- Call telescope
