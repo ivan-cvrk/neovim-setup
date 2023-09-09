@@ -16,3 +16,8 @@ vscode-cpptools (https://github.com/microsoft/vscode-cpptools/releases, director
 -- external programs
 
 ripgrep
+
+-- for python if using pyright
+
+flake8
+autopep8
