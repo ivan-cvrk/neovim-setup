@@ -111,6 +111,8 @@ lspconfig['lua_ls'].setup {
         -- and enviroment for working with vim has to be set.
         if client_cfg.root_dir and client_cfg.root_dir:match('nvim') or file_path:match('nvim') then
 
+            vim.api.cmd 'setlocal keywordprg=:help'
+
             -- Attach nvim-lua sources for autocompletion
             local cmp = require('cmp')
             local cmp_config = cmp.get_config()

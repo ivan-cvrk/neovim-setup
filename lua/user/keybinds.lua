@@ -18,6 +18,8 @@ map('n', 'J', '<c-w>j')
 map('n', 'K', '<c-w>k')
 map('n', 'L', '<c-w>l')
 
+vim.keymap.set('n', '<leader>K', 'K', {noremap=true})
+
 -- Move line up and down in NORMAL and VISUAL modes
 -- Reference: https://vim.fandom.com/wiki/Moving_lines_up_or_down
 map('n', '<C-j>', ':move .+1<CR>')
