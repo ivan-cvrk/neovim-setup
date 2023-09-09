@@ -13,19 +13,19 @@ map('i', '<C-E>', '<ESC>A')
 map('i', '<C-A>', '<ESC>I')
 
 -- Move cursor between tabs
-map('n', 'H', '<c-w>h')
-map('n', 'J', '<c-w>j')
-map('n', 'K', '<c-w>k')
-map('n', 'L', '<c-w>l')
+map('n', '<C-H>', '<C-W>h')
+map('n', '<C-J>', '<C-W>j')
+map('n', '<C-K>', '<C-W>k')
+map('n', '<C-L>', '<C-W>l')
 
 vim.keymap.set('n', '<leader>K', 'K', {noremap=true})
 
 -- Move line up and down in NORMAL and VISUAL modes
 -- Reference: https://vim.fandom.com/wiki/Moving_lines_up_or_down
-map('n', '<C-j>', ':move .+1<CR>')
-map('n', '<C-k>', ':move .-2<CR>')
-map('x', '<C-j>', ":move '>+1<CR>gv=gv")
-map('x', '<C-k>', ":move '<-2<CR>gv=gv")
+--map('n', '<C-j>', ':move .+1<CR>')
+--map('n', '<C-k>', ':move .-2<CR>')
+--map('x', '<C-j>', ":move '>+1<CR>gv=gv")
+--map('x', '<C-k>', ":move '<-2<CR>gv=gv")
 
 -- Use operator pending mode to visually select the whole buffer
 -- e.g. dA = delete buffer ALL, yA = copy whole buffer ALL
