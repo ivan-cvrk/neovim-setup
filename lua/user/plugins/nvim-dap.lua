@@ -53,9 +53,9 @@ vim.keymap.set('n', '\\dt', function() widgets.centered_float(widgets.threads) e
     desc = 'Dap widgets threads'
 })
 
-vim.api.nvim_set_hl(0, 'DapBreakpoint', { fg = '#993939', bg = '#31353f' })
-vim.api.nvim_set_hl(0, 'DapLogPoint', { fg = '#61afef', bg = '#31353f' })
-vim.api.nvim_set_hl(0, 'DapStopped', { fg = '#98c379', bg = '#31353f' })
+vim.api.nvim_set_hl(0, 'DapBreakpoint', { fg = '#993939' })
+vim.api.nvim_set_hl(0, 'DapLogPoint', { fg = '#61afef' })
+vim.api.nvim_set_hl(0, 'DapStopped', { fg = '#98c379' })
 
 vim.fn.sign_define('DapBreakpoint', {
     text = '',
