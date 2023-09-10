@@ -15,6 +15,7 @@ require('user.plugins.lualine')
 require('user.plugins.nvim-tree')
 require('user.plugins.symbols-outline')
 require('user.plugins.nvim-dap')
+require('user.plugins.luasnip')
 
 vim.cmd.colorscheme 'catppuccin'
 
