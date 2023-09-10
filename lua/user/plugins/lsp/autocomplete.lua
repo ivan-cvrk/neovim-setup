@@ -3,6 +3,7 @@ local cmp = require('cmp')
 local luasnip = require('luasnip')
 local lspkind = require('lspkind')
 
+
 -- setup autocomplete
 cmp.setup {
     snippet = {
@@ -11,8 +12,8 @@ cmp.setup {
         end,
     },
     mapping = cmp.mapping.preset.insert({
-        ['<C-d>'] = cmp.mapping.scroll_docs( -4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-u>'] = cmp.mapping.scroll_docs( -4),
+        ['<C-d>'] = cmp.mapping.scroll_docs(4),
         ['<C-e>'] = cmp.mapping.close(),
         ['<C-y>'] = cmp.mapping.confirm {
             behavior = cmp.ConfirmBehavior.Insert,
