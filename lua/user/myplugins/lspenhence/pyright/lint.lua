@@ -1,4 +1,3 @@
-vim.notify('called lint')
 local namespace = vim.api.nvim_create_namespace('Flake8NS')
 
 local function extract_report(report)
@@ -35,13 +34,30 @@ end
 
 local augroup = vim.api.nvim_create_augroup('PythonDiagnosticPEP8', { clear = true })
 
-local function attachlinting(bufnr)
-    vim.api.nvim_create_autocmd('BufWritePost', {
-        group = augroup,
-        buffer = bufnr,
-        callback = function() runflake8(bufnr) end
+local function configure_linter(bufnr)
+    vim.fn.jobstart({ 'sh', '-c', 'command -v flake8' }, {
+        on_exit = function(_, code)
+            if code == 0 then
+                vim.api.nvim_create_autocmd('BufWritePost', {
+                    group = augroup,
+                    buffer = bufnr,
+                    callback = function() runflake8(bufnr) end
+                })
+                runflake8(bufnr)
+            else
+                vim.notify('Linting program \'flake8\' not found.')
+            end
+        end
     })
-    runflake8(bufnr)
+end
+
+local function attachlinting(bufnr)
+    local sysname = vim.loop.os_uname().sysname
+    if sysname == 'Linux' then
+        configure_linter(bufnr)
+    else
+        vim.notify('Pyright enhence not available for system ' .. sysname)
+    end
 end
 
 local M = {}

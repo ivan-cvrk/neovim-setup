@@ -1,5 +1,4 @@
 local function format(bufnr)
-    vim.notify('Called formatfile!')
     local channel = vim.fn.jobstart({ 'autopep8', '-' }, {
         stdout_buffered = true,
         on_stdout = function(_, data)
@@ -14,12 +13,30 @@ local function format(bufnr)
     vim.fn.chanclose(channel, 'stdin')
 end
 
-local M = {}
-M.attachformat = function(bufnr)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', '', {
-        noremap = true,
-        callback = function() format(bufnr) end
+local function configure_formatter(bufnr)
+    vim.fn.jobstart({ 'sh', '-c', 'command -v flake8' }, {
+        on_exit = function(_, code)
+            if code == 0 then
+            vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', '', {
+                noremap = true,
+                callback = function() format(bufnr) end
+            })
+            else
+                vim.notify('Formatting program \'autopep8\' not found.')
+            end
+        end
     })
 end
 
+local function attachformat(bufnr)
+    local sysname = vim.loop.os_uname().sysname
+    if sysname == 'Linux' then
+        configure_formatter(bufnr)
+    else
+        vim.notify('Pyright enhence not available for system ' .. sysname)
+    end
+end
+
+local M = {}
+M.attachformat = attachformat
 return M
