@@ -17,6 +17,8 @@ map('n', '<C-H>', '<C-W>h')
 map('n', '<C-J>', '<C-W>j')
 map('n', '<C-K>', '<C-W>k')
 map('n', '<C-L>', '<C-W>l')
+map('n', '<C-[>', ':noh<CR>')
+
 
 vim.keymap.set('n', '<leader>K', 'K', {noremap=true})
 
