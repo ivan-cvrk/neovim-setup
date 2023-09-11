@@ -19,10 +19,10 @@ vim.keymap.set('n', '<space>p', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', '<space>n', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
-local lspenhence = require('user.myplugins.lspenhence.enhence')
+local lspenhence = require('user.myplugins.lspenhence')
 
 local on_attach = function(client, bufnr)
-    lspenhence(client.name, bufnr)
+    lspenhence.enhence(client.name, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -49,20 +49,8 @@ local on_attach = function(client, bufnr)
     end
 end
 
-local lsp_flags = {
-    -- This is the default in Nvim 0.7+
-    debounce_text_changes = 150,
-}
-
 -- Server setups
 
--- See https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
--- for specific about your langage
-
-
--- Standard requirements
-
--- list of language servers for standard setup
 
 local language_servers = { 'pyright', 'clangd', 'tsserver', 'html', 'emmet_ls', 'cssls' }
 
@@ -70,7 +58,6 @@ for _, ls in ipairs(language_servers) do
 
     lspconfig[ls].setup {
         on_attach = on_attach,
-        flags = lsp_flags,
         capabilities = capabilities
     }
 
@@ -142,6 +129,5 @@ lspconfig['lua_ls'].setup {
 
         end
     end,
-    flags = lsp_flags,
     capabilities = capabilities,
 }

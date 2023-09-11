@@ -1,4 +1,4 @@
-local myfuncs = require('user.myfuncs')
+local execdir = require('user.myplugins.execdir')
 
 local function map(m, k, v)
     vim.api.nvim_set_keymap(m, k, v, { silent = true, noremap = true })
@@ -53,5 +53,5 @@ map('n', '\\r', ':Telescope lsp_references<CR>')
 -- Neogen create doc
 map('n', '\\d', ':lua require\'neogen\'.generate()<CR>')
 
-vim.keymap.set('n', '\\x', myfuncs.execute_nvim_files_in_dir, { remap = false })
+vim.keymap.set('n', '\\x', execdir.execute_nvim_files_in_dir, { remap = false })
 

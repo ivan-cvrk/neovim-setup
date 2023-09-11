@@ -18,7 +18,7 @@ dashboard.setup {
             {
                 icon = '  ',
                 desc = 'Open      ',
-                action = 'exe \'NvimTreeOpen\' | exe \'wincmd p\' | exe \'q\' | lua vim.schedule(function() require(\'user.myfuncs\').execute_nvim_files_in_dir() end)',
+                action = 'exe \'NvimTreeOpen\' | exe \'wincmd p\' | exe \'q\' | lua vim.schedule(function() require(\'user.myplugins.execdir\').execute_nvim_files_in_dir() end)',
                 icon_hl = 'DashboardIcon',
                 desc_hl = 'DashboardLabel',
             },
