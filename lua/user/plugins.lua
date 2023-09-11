@@ -89,6 +89,11 @@ return packer.startup({
         use('nvim-telescope/telescope-project.nvim')
 
         use {
+            "benfowler/telescope-luasnip.nvim",
+        }
+
+
+        use {
             'glepnir/dashboard-nvim',
             config = function()
                 require('user.plugins.dashboard')
@@ -146,8 +151,6 @@ return packer.startup({
         }
 
         use('nvim-treesitter/playground')
-
-        use('HiPhish/nvim-ts-rainbow2')
 
         use('danymat/neogen')
     end,

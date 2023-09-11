@@ -30,7 +30,13 @@ vim.keymap.set({ 's', 'i' }, '<C-L>', function()
     end
 end, { desc = "Luasnip expand or jump" })
 
-ls.filetype_extend('c', { 'c_cpp' })
-ls.filetype_extend('cpp', { 'c_cpp' })
 require('luasnip.loaders.from_lua').lazy_load({ paths = './luasnippets' })
+
+-- This won't work with lazy_load
+-- ls.load_snippet_docstrings(ls.get_snippets())
+
+--vim.api.nvim_create_user_command('LuaSnipCompileDocs', function()
+--    require('luasnip.loaders.from_lua').load({ paths = './luasnippets' })
+--    ls.store_snippet_docstrings(ls.get_snippets())
+--end, {})
 

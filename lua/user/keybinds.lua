@@ -46,7 +46,7 @@ map('n', '<C-m>', ':NvimTreeFocus<CR>')
 
 -- Call telescope
 map('n', '\\f', ':Telescope find_files<CR>')
-map('n', '\\t', ':Telescope<CR>')
+map('n', '\\t', ':Telescope builtin include_extensions=true<CR>')
 map('n', '\\q', ':Telescope buffers<CR>')
 map('n', '\\r', ':Telescope lsp_references<CR>')
 

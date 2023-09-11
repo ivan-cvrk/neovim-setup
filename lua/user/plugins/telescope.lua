@@ -1,6 +1,13 @@
 local telescope = require('telescope')
 local actions = require('telescope.actions')
 
+require('telescope').load_extension('project')
+require('telescope').load_extension('luasnip')
+
+local lst = require('telescope').extensions.luasnip
+local luasnip = require('luasnip')
+
+
 telescope.setup {
     defaults = {
 
@@ -85,8 +92,16 @@ telescope.setup {
     extensions = {
         project = {
             -- leave everything default
-        }
+        },
+        luasnip = {
+            search = function(entry)
+                return lst.filter_null(entry.context.trigger) .. " " ..
+                    lst.filter_null(entry.context.name) .. " " ..
+                    entry.ft .. " " ..
+                    lst.filter_description(entry.context.name, entry.context.description) ..
+                    lst.get_docstring(luasnip, entry.ft, entry.context)[1]
+            end
+        },
+
     }
 }
-
-require'telescope'.load_extension('project')
