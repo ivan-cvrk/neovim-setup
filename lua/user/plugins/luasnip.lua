@@ -30,7 +30,7 @@ vim.keymap.set({ 's', 'i' }, '<C-L>', function()
     end
 end, { desc = "Luasnip expand or jump" })
 
-require('luasnip.loaders.from_lua').lazy_load({ paths = './luasnippets' })
+require('luasnip.loaders.from_lua').lazy_load({ paths = './snippets' })
 
 -- This won't work with lazy_load
 -- ls.load_snippet_docstrings(ls.get_snippets())
