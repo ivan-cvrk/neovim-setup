@@ -32,11 +32,11 @@ end, { desc = "Luasnip expand or jump" })
 
 require('luasnip.loaders.from_lua').lazy_load({ paths = './snippets' })
 
--- This won't work with lazy_load
+-- This won't work here with lazy_load
 -- ls.load_snippet_docstrings(ls.get_snippets())
 
---vim.api.nvim_create_user_command('LuaSnipCompileDocs', function()
---    require('luasnip.loaders.from_lua').load({ paths = './luasnippets' })
---    ls.store_snippet_docstrings(ls.get_snippets())
---end, {})
+vim.api.nvim_create_user_command('LuaSnipCompileDocs', function()
+    require('luasnip.loaders.from_lua').load({ paths = './luasnippets' })
+    ls.store_snippet_docstrings(ls.get_snippets())
+end, {})
 
