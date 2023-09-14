@@ -18,30 +18,15 @@ return {
     },
 
     ----------------------
-    --    Navigation    --
+    -- Code Navigation  --
     ----------------------
 
     {
         'simrat39/symbols-outline.nvim',
         config = true,
+        keys = { {'<F2>', ':SymbolsOutline<CR>', silent = true, mode = 'n' } },
         cmd = { 'SymbolsOutline', 'SymbolsOutlineOpen' }
     },
-
-    ----------------------
-    --    Debugging    ---
-    ----------------------
-
-    -- load only when debugging needed
-
-    { 'mfussenegger/nvim-dap', lazy = true },
-
-    { 'rcarriga/nvim-dap-ui', lazy = true },
-
-    { 'nvim-telescope/telescope-dap.nvim', lazy = true },
-
-    { 'theHamsta/nvim-dap-virtual-text', lazy = true },
-
-    { 'mfussenegger/nvim-dap-python', lazy = true },
 
     ----------------------
     --     Editing     ---

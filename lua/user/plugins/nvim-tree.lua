@@ -5,23 +5,34 @@ return {
     dependencies = {
         'nvim-tree/nvim-web-devicons',
     },
+    keys = {
+        { '<C-n>', ':NvimTreeToggle<CR>', silent = true, mode = 'n' },
+        { '<C-m>', ':NvimTreeFocus<CR>',  silent = true, mode = 'n' }
+    },
     config = function()
         local ntree = require('nvim-tree')
 
         local function my_on_attach(bufnr)
-          local api = require "nvim-tree.api"
+            local api = require "nvim-tree.api"
 
-          local function opts(desc)
-            return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
-          end
+            local function opts(desc)
+                return {
+                    desc = "nvim-tree: " .. desc,
+                    buffer = bufnr,
+                    noremap = true,
+                    silent = true,
+                    nowait = true
+                }
+            end
 
-          -- default mappings
-          api.config.mappings.default_on_attach(bufnr)
+            -- default mappings
+            api.config.mappings.default_on_attach(bufnr)
 
-          -- custom mappings
-          vim.keymap.set('n', 'u', api.tree.change_root_to_parent, opts('Up folder'))
-          vim.keymap.set('n', 'i', function()
-                api.tree.change_root_to_node(api.tree.get_node_under_cursor()) end,
+            -- custom mappings
+            vim.keymap.set('n', 'u', api.tree.change_root_to_parent, opts('Up folder'))
+            vim.keymap.set('n', 'i', function()
+                api.tree.change_root_to_node(api.tree.get_node_under_cursor())
+            end,
                 opts('Enter folder'))
         end
 
@@ -41,6 +52,5 @@ return {
         vim.keymap.set("n", "<leader>ts", require("nvim-tree.api").marks.navigate.select, {
             desc = "NvimTree bookmarks select"
         })
-
     end,
 }

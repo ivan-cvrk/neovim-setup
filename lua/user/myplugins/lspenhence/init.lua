@@ -7,7 +7,6 @@ local lang_server_enhancers = {
 }
 
 local function enhence(client_name, bufnr)
-    vim.notify(client_name)
     local enhencer = lang_server_enhancers[client_name]
     if enhencer ~= nil then
         enhencer(bufnr)

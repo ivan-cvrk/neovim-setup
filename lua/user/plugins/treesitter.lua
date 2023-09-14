@@ -2,20 +2,20 @@ return {
     {
         'windwp/nvim-autopairs',
         lazy = true,
-        event = "InsertEnter", -- maybe remove
-        opts = {}
+        event = 'InsertEnter',
+        opts = {},
+        dependencies = 'nvim-treesitter/nvim-treesitter'
     },
-    { 'windwp/nvim-ts-autotag', lazy = true },
     {
         'nvim-treesitter/playground',
         cmd = 'TSPlaygroundToggle',
-        dependencies = { 'nvim-treesitter/nvim-treesitter' }
+        dependencies = 'nvim-treesitter/nvim-treesitter'
     },
     {
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
+        'nvim-treesitter/nvim-treesitter',
+        build = ':TSUpdate',
+        event = { 'BufReadPre', 'BufNewFile' },
         config = function()
-
             local configs = require("nvim-treesitter.configs")
 
             configs.setup({
@@ -28,17 +28,7 @@ return {
                     enable = true,
                     disable = { 'html' }
                 },
-                autotag = {
-                    enable = true,
-                    enable_rename = true,
-                    enable_close = true,
-                    enable_close_on_slash = true,
-                },
-                autopairs = {
-                    enable = true,
-                },
             })
-
         end
     }
 }

@@ -19,37 +19,8 @@ map('n', '<C-K>', '<C-W>k')
 map('n', '<C-L>', '<C-W>l')
 map('n', '<C-[>', ':noh<CR>')
 
-
-vim.keymap.set('n', '<leader>K', 'K', {noremap=true})
-
--- Move line up and down in NORMAL and VISUAL modes
--- Reference: https://vim.fandom.com/wiki/Moving_lines_up_or_down
---map('n', '<C-j>', ':move .+1<CR>')
---map('n', '<C-k>', ':move .-2<CR>')
---map('x', '<C-j>', ":move '>+1<CR>gv=gv")
---map('x', '<C-k>', ":move '<-2<CR>gv=gv")
-
--- Use operator pending mode to visually select the whole buffer
--- e.g. dA = delete buffer ALL, yA = copy whole buffer ALL
--- map('o', 'A', ':<C-U>normal! mzggVG<CR>`z')
--- map('x', 'A', ':<C-U>normal! ggVG<CR>')
-
 -- Escape terminal to normal mode
 map('t', '<Esc>', '<C-\\><C-n>')
-
--- move keybinds to plugins respectfully
--- Symvols-outline
-map('n', '<F2>', ':SymbolsOutline<CR>')
-
--- NvimTree toggles move to telescpe config
-map('n', '<C-n>', ':NvimTreeToggle<CR>')
-map('n', '<C-m>', ':NvimTreeFocus<CR>')
-
--- Call telescope move to telescope config
-map('n', '\\f', ':Telescope find_files<CR>')
-map('n', '\\t', ':Telescope builtin include_extensions=true<CR>')
-map('n', '\\q', ':Telescope buffers<CR>')
-map('n', '\\r', ':Telescope lsp_references<CR>')
 
 vim.keymap.set('n', '\\x', execdir.execute_nvim_files_in_dir, { remap = false })
 

@@ -3,8 +3,26 @@ return {
     { 'benfowler/telescope-luasnip.nvim', lazy = true },
     {
         'nvim-telescope/telescope.nvim',
-        event = 'VeryLazy',
         dependencies = { 'nvim-lua/plenary.nvim' },
+        cmd = { 'Telescope' },
+        keys = {
+            {
+                '\\f', ':Telescope find_files<CR>',
+                silent = true, mode = 'n'
+            },
+            {
+                '\\t', ':Telescope builtin include_extensions=true<CR>',
+                silent = true, mode = 'n'
+            },
+            {
+                '\\q', ':Telescope buffers<CR>',
+                silent = true, mode = 'n'
+            },
+            {
+                '\\r', ':Telescope lsp_references<CR>',
+                silent = true, mode = 'n'
+            }
+        },
         config = function()
             local telescope = require('telescope')
 
@@ -30,6 +48,9 @@ return {
                     project = {
                         -- leave everything default
                     },
+                    dap = {
+
+                    },
                     luasnip = {
                         search = function(entry)
                             local lst = require('telescope').extensions.luasnip
@@ -42,7 +63,6 @@ return {
                                 lst.get_docstring(luasnip, entry.ft, entry.context)[0]
                         end
                     },
-
                 }
             }
         end,

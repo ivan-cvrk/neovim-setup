@@ -1,5 +1,3 @@
--- Setup module
-
 return {
     {
         'hrsh7th/nvim-cmp',
