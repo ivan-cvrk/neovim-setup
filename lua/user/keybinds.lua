@@ -37,21 +37,19 @@ vim.keymap.set('n', '<leader>K', 'K', {noremap=true})
 -- Escape terminal to normal mode
 map('t', '<Esc>', '<C-\\><C-n>')
 
+-- move keybinds to plugins respectfully
 -- Symvols-outline
 map('n', '<F2>', ':SymbolsOutline<CR>')
 
--- NvimTree toggles
+-- NvimTree toggles move to telescpe config
 map('n', '<C-n>', ':NvimTreeToggle<CR>')
 map('n', '<C-m>', ':NvimTreeFocus<CR>')
 
--- Call telescope
+-- Call telescope move to telescope config
 map('n', '\\f', ':Telescope find_files<CR>')
 map('n', '\\t', ':Telescope builtin include_extensions=true<CR>')
 map('n', '\\q', ':Telescope buffers<CR>')
 map('n', '\\r', ':Telescope lsp_references<CR>')
-
--- Neogen create doc
-map('n', '\\d', ':lua require\'neogen\'.generate()<CR>')
 
 vim.keymap.set('n', '\\x', execdir.execute_nvim_files_in_dir, { remap = false })
 

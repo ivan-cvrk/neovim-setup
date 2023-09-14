@@ -1,6 +1,5 @@
 if _G.LUASNIP_LOAD_DOC then
-    local ls = require('luasnip')
-    vim.schedule(function() ls.load_snippet_docstrings(ls.get_snippets()) end)
+    _G.LUASNIP_LOAD_DOC()
 end
 
 return {
