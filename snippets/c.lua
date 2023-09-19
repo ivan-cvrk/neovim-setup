@@ -13,7 +13,7 @@ local ts_query = [[
 
 vim.treesitter.query.set('c', 'ForVar', ts_query)
 
-local function get_next_var_name(args)
+local function get_next_var_name()
     local for_node = ts_utils.get_node_at_cursor()
     while (for_node ~= nil) do
         if for_node:type() == 'for_statement' then
