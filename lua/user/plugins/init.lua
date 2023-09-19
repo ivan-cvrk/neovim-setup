@@ -13,7 +13,7 @@ return {
 
     {
         'nvim-lualine/lualine.nvim',
-        config = true,
+        opts = { options = { disabled_filetypes = { 'dashboard' } } },
         event = 'VeryLazy' -- check if correct
     },
 
@@ -24,7 +24,7 @@ return {
     {
         'simrat39/symbols-outline.nvim',
         config = true,
-        keys = { {'<F2>', ':SymbolsOutline<CR>', silent = true, mode = 'n' } },
+        keys = { { '<F2>', ':SymbolsOutline<CR>', silent = true, mode = 'n' } },
         cmd = { 'SymbolsOutline', 'SymbolsOutlineOpen' }
     },
 

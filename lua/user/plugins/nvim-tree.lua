@@ -40,6 +40,9 @@ return {
             on_attach = my_on_attach,
             view = {
                 adaptive_size = true,
+            },
+            filters = {
+                dotfiles = true
             }
         })
 
