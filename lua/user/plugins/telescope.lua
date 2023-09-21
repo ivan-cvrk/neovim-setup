@@ -21,6 +21,14 @@ return {
             {
                 '\\r', ':Telescope lsp_references<CR>',
                 silent = true, mode = 'n'
+            },
+            {
+                '\\l', ':Telescope live_grep<CR>',
+                silent = true, mode = 'n'
+            },
+            {
+                '\\o', ':Telescope old_files<CR>',
+                silent = true, mode = 'n'
             }
         },
         config = function()

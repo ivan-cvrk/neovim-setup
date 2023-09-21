@@ -19,7 +19,7 @@ return {
             }
         }
         )
-        vim.api.nvim_set_keymap('n', '\\qn', '',
+        vim.api.nvim_set_keymap('n', '<PageUp>', '',
             {
                 callback = function()
                     bufferline.cycle(1)
@@ -28,7 +28,7 @@ return {
                 silent = true
             }
         )
-        vim.api.nvim_set_keymap('n', '\\qp', '',
+        vim.api.nvim_set_keymap('n', '<PageDown>', '',
             {
                 callback = function()
                     bufferline.cycle(-1)
@@ -46,7 +46,7 @@ return {
                 silent = true
             }
         )
-        vim.api.nvim_set_keymap('n', '\\qmn', '',
+        vim.api.nvim_set_keymap('n', '\\qn', '',
             {
                 callback = function()
                     bufferline.move(1)
@@ -55,12 +55,18 @@ return {
                 silent = true
             }
         )
-        vim.api.nvim_set_keymap('n', '\\qmp', '',
+        vim.api.nvim_set_keymap('n', '\\qp', '',
             {
                 callback = function()
                     bufferline.move(-1)
                 end,
                 desc = 'Bufferline: move prev',
+                silent = true
+            }
+        )
+        vim.api.nvim_set_keymap('n', '\\ql', ':BufferLineTogglePin<CR>',
+            {
+                desc = 'Bufferline: close current',
                 silent = true
             }
         )
