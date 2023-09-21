@@ -15,7 +15,7 @@ return {
                 silent = true, mode = 'n'
             },
             {
-                '\\q', ':Telescope buffers<CR>',
+                '\\qt', ':Telescope buffers<CR>',
                 silent = true, mode = 'n'
             },
             {
@@ -46,7 +46,7 @@ return {
                 },
                 extensions = {
                     project = {
-                        -- leave everything default
+                        sync_with_nvim_tree = true,
                     },
                     dap = {
 
