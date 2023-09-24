@@ -18,5 +18,9 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     { import = 'user.plugins' },
     { import = 'user.plugins.lsp' }
-})
+}, { ui = { title = 'Lazy', border = "rounded" } })
 
+if vim.g.neovide then
+    vim.o.guifont = 'JetBrainsMonoNL Nerd Font:h12:e-antialiasing'
+    vim.g.neovide_cursor_vfx_mode = "torpedo"
+end
