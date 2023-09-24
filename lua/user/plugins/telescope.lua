@@ -1,6 +1,7 @@
 return {
     { 'nvim-telescope/telescope-project.nvim',   lazy = true },
     { 'benfowler/telescope-luasnip.nvim',        lazy = true },
+    { 'nvim-telescope/telescope-ui-select.nvim', lazy = true },
     {
         'nvim-telescope/telescope.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' },
@@ -34,9 +35,6 @@ return {
         config = function()
             local telescope = require('telescope')
 
-            require('telescope').load_extension('project')
-            require('telescope').load_extension('luasnip')
-
             telescope.setup {
                 defaults = {
                     prompt_prefix = ' ',
@@ -59,6 +57,9 @@ return {
                     dap = {
 
                     },
+                    ['ui-select'] = {
+                        require("telescope.themes").get_dropdown {}
+                    },
                     luasnip = {
                         search = function(entry)
                             local lst = require('telescope').extensions.luasnip
@@ -73,6 +74,10 @@ return {
                     },
                 }
             }
+
+            require('telescope').load_extension('project')
+            require('telescope').load_extension('luasnip')
+            require('telescope').load_extension('ui-select')
         end,
     }
 }

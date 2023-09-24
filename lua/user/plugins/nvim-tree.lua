@@ -43,7 +43,8 @@ return {
             },
             filters = {
                 dotfiles = true
-            }
+            },
+            select_prompts = true
         })
 
         vim.keymap.set("n", "<leader>tn", require("nvim-tree.api").marks.navigate.next, {

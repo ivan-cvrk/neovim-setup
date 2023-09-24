@@ -4,6 +4,7 @@ local function map(m, k, v)
     vim.api.nvim_set_keymap(m, k, v, { silent = true, noremap = true })
 end
 
+
 -- Fix n and N. Keeping cursor in center
 map('n', 'n', 'nzz')
 map('n', 'N', 'Nzz')
