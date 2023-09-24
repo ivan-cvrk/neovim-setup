@@ -1,6 +1,6 @@
 return {
-    { 'nvim-telescope/telescope-project.nvim', lazy = true },
-    { 'benfowler/telescope-luasnip.nvim', lazy = true },
+    { 'nvim-telescope/telescope-project.nvim',   lazy = true },
+    { 'benfowler/telescope-luasnip.nvim',        lazy = true },
     {
         'nvim-telescope/telescope.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' },
