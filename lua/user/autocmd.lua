@@ -8,6 +8,8 @@ vim.filetype.add({
         conf = 'conf',
         mdx = 'markdown',
         mjml = 'html',
+        vert = 'glsl',
+        frag = 'glsl'
     },
     pattern = {
         ['.*%.env.*'] = 'sh',
