@@ -24,5 +24,13 @@ return {
         }}
         ]],
         { i(1, 'i'), i(2, '0'), rep(1), i(3), rep(1), i(0) }
+    )),
+    s({ trig = 'fn', dscr = 'function definition' }, fmt(
+        [[
+        {} {}({}) {{
+            {}
+        }}
+        ]],
+        { i(1, '<type>'), i(2, '<name>'), i(3, '<arguments>'), i(0) }
     ))
 }
