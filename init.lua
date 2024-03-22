@@ -21,6 +21,6 @@ require("lazy").setup({
 }, { ui = { title = 'Lazy', border = "rounded" } })
 
 if vim.g.neovide then
-    vim.o.guifont = 'JetBrainsMonoNL Nerd Font:h12:e-antialiasing'
+    vim.o.guifont = 'JetBrainsMonoNL Nerd Font:h16:e-antialiasing'
     vim.g.neovide_cursor_vfx_mode = "torpedo"
 end
