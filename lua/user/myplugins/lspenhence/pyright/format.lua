@@ -14,7 +14,7 @@ local function format(bufnr)
 end
 
 local function configure_formatter(bufnr)
-    vim.fn.jobstart({ 'sh', '-c', 'command -v flake8' }, {
+    vim.fn.jobstart({ 'sh', '-c', 'command -v autopep8' }, {
         on_exit = function(_, code)
             if code == 0 then
             vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', '', {
