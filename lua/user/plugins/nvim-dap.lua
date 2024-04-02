@@ -6,6 +6,7 @@ return {
             { 'rcarriga/nvim-dap-ui',             config = true },
             { 'theHamsta/nvim-dap-virtual-text',  opts = {} },
             { 'nvim-telescope/telescope-dap.nvim' },
+            { 'nvim-neotest/nvim-nio' },
         },
         keys = {
             {
