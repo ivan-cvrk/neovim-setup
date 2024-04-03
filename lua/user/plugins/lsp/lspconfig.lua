@@ -50,7 +50,7 @@ return {
         -- Server setups
 
 
-        local language_servers = { 'pyright', 'clangd', 'tsserver', 'html', 'emmet_ls', 'cssls' }
+        local language_servers = { "gopls", 'pyright', 'clangd', 'tsserver', 'html', 'emmet_ls', 'cssls' }
 
         for _, ls in ipairs(language_servers) do
 
