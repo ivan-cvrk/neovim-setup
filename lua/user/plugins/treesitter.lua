@@ -19,7 +19,7 @@ return {
             local configs = require("nvim-treesitter.configs")
 
             configs.setup({
-                ensure_installed = { 'c', 'cpp', 'lua', 'python' },
+                ensure_installed = { 'c', 'cpp', 'lua', 'python', 'go', 'vimdoc' },
                 highlight = {
                     enable = true, -- false will disable the whole extension
                     additional_vim_regex_highlighting = false,

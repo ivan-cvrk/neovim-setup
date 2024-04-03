@@ -52,3 +52,16 @@ A.nvim_create_autocmd('BufEnter', {
         end
     end
 })
+
+-- Go setup
+A.nvim_create_autocmd('BufEnter', {
+    group = num_au,
+    pattern = '*.go',
+    callback = function(opt)
+        if vim.bo[opt.buf].filetype == 'go' then
+            vim.o.tabstop = 4
+            vim.cmd.setlocal 'noexpandtab'
+            vim.cmd.setlocal 'listchars+=tab:\\ \\ '
+        end
+    end,
+})
