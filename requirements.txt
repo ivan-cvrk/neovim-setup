@@ -21,3 +21,7 @@ ripgrep
 
 flake8
 autopep8
+
+-- for go
+
+gopls
