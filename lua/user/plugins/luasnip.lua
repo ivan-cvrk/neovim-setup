@@ -34,7 +34,7 @@ return {
             if ls.choice_active() then
                 ls.change_choice(1)
             end
-        end, { desc = "Luasnip expand or jump" })
+        end, { desc = "Luasnip change choice" })
 
 
         local load_doc = vim.schedule(function()
