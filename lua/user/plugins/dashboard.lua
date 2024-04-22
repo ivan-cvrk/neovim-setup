@@ -22,7 +22,7 @@ return {
                     {
                         icon = '  ',
                         desc = 'Open      ',
-                        action = 'exe \'NvimTreeOpen\' | exe \'wincmd p\' | exe \'q\' | lua vim.schedule(function() require(\'user.myplugins.execdir\').execute_nvim_files_in_dir() end)',
+                        action = 'exe \'NvimTreeOpen\' | lua vim.schedule(function() require(\'user.myplugins.execdir\').execute_nvim_files_in_dir() end)',
                         icon_hl = 'DashboardIcon',
                         desc_hl = 'DashboardLabel',
                     },
@@ -50,7 +50,7 @@ return {
                     {
                         icon = '  ',
                         desc = 'Config    ',
-                        action = 'edit ' .. vim.fn.stdpath 'config',
+                        action = 'lua require(\'nvim-tree.api\').tree.open({ path="' .. vim.fn.stdpath 'config' .. '"})',
                         icon_hl = 'DashboardIcon',
                         desc_hl = 'DashboardLabel',
                     },
