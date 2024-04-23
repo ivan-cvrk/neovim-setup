@@ -4,6 +4,7 @@ local o = vim.o
 -- cmd('syntax on')
 vim.api.nvim_command('filetype plugin indent on')
 
+g.have_nerd_font = true
 o.termguicolors = true
 -- o.background = 'dark'
 
