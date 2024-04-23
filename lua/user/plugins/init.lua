@@ -24,7 +24,7 @@ return {
     {
         'simrat39/symbols-outline.nvim',
         config = true,
-        keys = { { '<F2>', ':SymbolsOutline<CR>', silent = true, mode = 'n' } },
+        keys = { { '<F2>', ':SymbolsOutline<CR>', silent = true, mode = 'n', desc = "Symbols outline toggle" } },
         cmd = { 'SymbolsOutline', 'SymbolsOutlineOpen' }
     },
 
@@ -45,7 +45,7 @@ return {
                 function()
                     vim.schedule_wrap(require('neogen').generate())
                 end,
-                silent = true, mode = 'n'
+                silent = true, mode = 'n', desc = 'Neogen comment'
             }
         },
     }
