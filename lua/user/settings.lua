@@ -11,6 +11,8 @@ o.termguicolors = true
 -- Do not save when switching buffers
 -- o.hidden = true
 
+vim.opt.mouse = ''
+
 -- Decrease update time
 o.timeoutlen = 500
 o.updatetime = 200
