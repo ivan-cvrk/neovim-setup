@@ -50,7 +50,7 @@ return {
                     {
                         icon = '  ',
                         desc = 'Config    ',
-                        action = 'lua require(\'nvim-tree.api\').tree.open({ path="' .. vim.fn.stdpath 'config' .. '"})',
+                        action = 'cd ' .. vim.fn.stdpath 'config' .. ' | lua require(\'nvim-tree.api\').tree.open({ path="' .. vim.fn.stdpath 'config' .. '"})',
                         icon_hl = 'DashboardIcon',
                         desc_hl = 'DashboardLabel',
                     },
