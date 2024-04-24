@@ -16,7 +16,7 @@ return {
                 silent = true, mode = 'n'
             },
             {
-                '\\qt', ':Telescope buffers<CR>',
+                '\\q', ':Telescope buffers<CR>',
                 silent = true, mode = 'n'
             },
             {
