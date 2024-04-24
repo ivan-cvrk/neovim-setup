@@ -13,9 +13,9 @@ return {
     vim.keymap.set('n', '<C-e>', function() harpoon_ui.toggle_quick_menu() end)
 
     vim.keymap.set('n', '<C-h>', function() harpoon_ui.nav_file(1) end)
-    vim.keymap.set('n', '<C-m>', function() harpoon_ui.nav_file(2) end)
-    vim.keymap.set('n', '<C-s>', function() harpoon_ui.nav_file(3) end)
-    vim.keymap.set('n', '<C-t>', function() harpoon_ui.nav_file(4) end)
-    vim.keymap.set('n', '<leader><C-h>', function() harpoon_term.gotoTerminal(1) end)
+    vim.keymap.set('n', '<C-j>', function() harpoon_ui.nav_file(2) end)
+    vim.keymap.set('n', '<C-m>', function() harpoon_ui.nav_file(3) end)
+    vim.keymap.set('n', '<C-s>', function() harpoon_ui.nav_file(4) end)
+    vim.keymap.set('n', '<C-t>', function() harpoon_term.gotoTerminal(1) end)
   end
 }
