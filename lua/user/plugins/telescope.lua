@@ -78,6 +78,7 @@ return {
             require('telescope').load_extension('project')
             require('telescope').load_extension('luasnip')
             require('telescope').load_extension('ui-select')
+            require("telescope").load_extension('harpoon')
         end,
     }
 }
