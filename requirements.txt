@@ -25,9 +25,3 @@ autopep8
 -- for go
 
 gopls
-
--- for latex
-
-texlab
-zathura
-latexmk
