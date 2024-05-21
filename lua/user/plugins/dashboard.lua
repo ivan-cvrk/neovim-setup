@@ -22,7 +22,7 @@ return {
                     {
                         icon = '  ',
                         desc = 'Open      ',
-                        action = 'exe \'NvimTreeOpen\' | lua vim.schedule(function() require(\'user.myplugins.execdir\').execute_nvim_files_in_dir() end)',
+                        action = 'e .',
                         icon_hl = 'DashboardIcon',
                         desc_hl = 'DashboardLabel',
                     },

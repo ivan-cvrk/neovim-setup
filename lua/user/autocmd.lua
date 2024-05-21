@@ -9,7 +9,8 @@ vim.filetype.add({
         mdx = 'markdown',
         mjml = 'html',
         vert = 'glsl',
-        frag = 'glsl'
+        frag = 'glsl',
+        geom = 'glsl',
     },
     pattern = {
         ['.*%.env.*'] = 'sh',
