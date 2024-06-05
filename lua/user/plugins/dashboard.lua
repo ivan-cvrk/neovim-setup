@@ -5,11 +5,11 @@ return {
 
         local dashboard = require('dashboard')
 
-        --vim.api.nvim_set_hl(0, 'DashboardHeader', { fg = '#61afef' })
-        --vim.api.nvim_set_hl(0, 'DashboardFooter', { fg = '#98c379' })
-        --
-        --vim.api.nvim_set_hl(0, 'DashboardLabel', { fg = '#c678dd' })
-        --vim.api.nvim_set_hl(0, 'DashboardIcon', { fg = '#e5c07b' })
+        vim.api.nvim_set_hl(0, 'DashboardHeader', { fg = '#61afef' })
+        vim.api.nvim_set_hl(0, 'DashboardFooter', { fg = '#98c379' })
+
+        vim.api.nvim_set_hl(0, 'DashboardLabel', { fg = '#c678dd' })
+        vim.api.nvim_set_hl(0, 'DashboardIcon', { fg = '#e5c07b' })
 
 
         dashboard.setup {

@@ -3,17 +3,20 @@ return {
   --      Style       --
   ----------------------
   {
-    'catppuccin/nvim',
-    lazy = false,
-    priority = 1000,
+    "olimorris/onedarkpro.nvim",
+    priority = 1000, -- Ensure it loads first
     config = function()
-      vim.cmd.colorscheme 'catppuccin'
+      vim.cmd("colorscheme onedark")
     end
   },
 
   {
     'nvim-lualine/lualine.nvim',
-    opts = { options = { disabled_filetypes = { 'dashboard' } } },
+    opts = {
+      options = {
+        disabled_filetypes = { 'dashboard' },
+      }
+    },
     event = 'VeryLazy' -- check if correct
   },
 

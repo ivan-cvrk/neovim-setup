@@ -66,6 +66,7 @@ return {
               col = center_x,
               width = window_w_int,
               height = window_h_int,
+              style = "minimal",
             }
           end,
         },
