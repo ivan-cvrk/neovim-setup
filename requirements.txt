@@ -25,3 +25,4 @@ autopep8
 -- for go
 
 gopls
+delve - go install github.com/go-delve/delve/cmd/dlv@latest
