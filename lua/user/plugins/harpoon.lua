@@ -49,10 +49,18 @@ return {
     })
 
     local harpoon_extensions = require("harpoon.extensions")
-    -- harpoon:extend(harpoon_extensions.builtins.highlight_current_file())
+    harpoon:extend(harpoon_extensions.builtins.highlight_current_file())
 
-    vim.keymap.set('n', '<C-e>', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
-    vim.keymap.set('n', '<leader>c', function() harpoon.ui:toggle_quick_menu(harpoon:list('cmd')) end)
+    vim.api.nvim_set_keymap('n', '<C-e>', '', {
+      callback = function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
+      desc = 'Harpoon show marked files list',
+    })
+
+    vim.api.nvim_set_keymap('n', '<leader>x', '', {
+      callback = function() harpoon.ui:toggle_quick_menu(harpoon:list('cmd')) end,
+      desc = 'Harpoon show cmd list',
+    })
+
     local harpoon_au = vim.api.nvim_create_augroup('HarpoonKeymaps', { clear = true })
     vim.api.nvim_create_autocmd('FileType', {
       group = harpoon_au,

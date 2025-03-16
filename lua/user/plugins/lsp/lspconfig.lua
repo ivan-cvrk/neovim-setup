@@ -11,7 +11,10 @@ return {
     capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
     local opts = { noremap = true, silent = true }
-    vim.keymap.set('n', '<space>dd', function() vim.diagnostic.enable(false) end, opts)
+    vim.api.nvim_set_keymap('n', '<space>dd', '', {
+      callback = function() vim.diagnostic.enable(false) end,
+      desc = 'disable diagnostic'
+    })
     vim.keymap.set('n', '<space>d', vim.diagnostic.enable, opts)
     vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
     vim.keymap.set('n', '<space>p', vim.diagnostic.goto_prev, opts)
@@ -38,9 +41,10 @@ return {
       vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
       vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
       vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-      vim.keymap.set('n', '<space>wl', function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-      end, bufopts)
+      vim.api.nvim_set_keymap('n', '<space>wl', '', {
+        callback = print(vim.inspect(vim.lsp.buf.list_workspace_folders())),
+        desc = 'lsp show workspace folders'
+      })
 
       if client.supports_method("textDocument/formatting") then
         vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
