@@ -3,7 +3,6 @@ return {
   dependencies = 'hrsh7th/cmp-nvim-lsp',
   event = { 'BufReadPre', 'BufNewFile' },
   config = function()
-    local lspconfig = require 'lspconfig'
     local cmp_nvim_lsp = require 'cmp_nvim_lsp'
 
     -- Add additional capabilities supported by nvim-cmp
@@ -17,8 +16,8 @@ return {
     })
     vim.keymap.set('n', '<space>d', vim.diagnostic.enable, opts)
     vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-    vim.keymap.set('n', '<space>p', vim.diagnostic.goto_prev, opts)
-    vim.keymap.set('n', '<space>n', vim.diagnostic.goto_next, opts)
+    vim.keymap.set('n', '<space>p', function() vim.diagnostic.jump({ count = -1 }) end, opts)
+    vim.keymap.set('n', '<space>n', function() vim.diagnostic.jump({ count = 1 }) end, opts)
     vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
     local lspenhence = require('user.myplugins.lspenhence')
@@ -54,20 +53,20 @@ return {
     -- Server setups
 
 
-    local language_servers = { "gopls", 'pyright', 'clangd', 'ts_ls', 'html', 'emmet_ls', 'cssls', 'texlab' }
+    local language_servers = { 'gopls', 'pyright', 'clangd' }
 
     for _, ls in ipairs(language_servers) do
-
-      lspconfig[ls].setup {
+      vim.lsp.enable(ls)
+      vim.lsp.config(ls, {
         on_attach = on_attach,
-        capabilities = capabilities
-      }
-
+        capabilities = capabilities,
+      })
     end
 
     -- Special requirements, manual setup
 
-    lspconfig['lua_ls'].setup {
+    vim.lsp.enable('lua_ls')
+    vim.lsp.config('lua_ls', {
       on_init = function(client)
         if client.workspace_folders then
           local path = client.workspace_folders[1].name
@@ -102,6 +101,6 @@ return {
       },
       capabilities = capabilities,
       on_attach = on_attach,
-    }
+    })
   end
 }
