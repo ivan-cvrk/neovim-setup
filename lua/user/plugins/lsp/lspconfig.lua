@@ -52,15 +52,14 @@ return {
 
     -- Server setups
 
+    vim.lsp.config('*', {
+      on_attach = on_attach,
+      capabilities = capabilities,
+    })
 
-    local language_servers = { 'gopls', 'pyright', 'clangd' }
-
+    local language_servers = { 'clangd' }
     for _, ls in ipairs(language_servers) do
       vim.lsp.enable(ls)
-      vim.lsp.config(ls, {
-        on_attach = on_attach,
-        capabilities = capabilities,
-      })
     end
 
     -- Special requirements, manual setup
