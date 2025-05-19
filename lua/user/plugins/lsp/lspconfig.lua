@@ -52,6 +52,7 @@ return {
 
     -- Server setups
 
+    -- suggest configs on new language servers
     vim.lsp.config('*', {
       on_attach = on_attach,
       capabilities = capabilities,
@@ -60,6 +61,11 @@ return {
     local language_servers = { 'clangd' }
     for _, ls in ipairs(language_servers) do
       vim.lsp.enable(ls)
+      -- enforce my configs on language servers
+      vim.lsp.config(ls, {
+        on_attach = on_attach,
+        capabilities = capabilities,
+      })
     end
 
     -- Special requirements, manual setup
