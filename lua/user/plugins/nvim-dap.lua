@@ -6,7 +6,6 @@ return {
             { 'rcarriga/nvim-dap-ui',             config = true },
             { 'theHamsta/nvim-dap-virtual-text',  opts = {} },
             { 'nvim-telescope/telescope-dap.nvim' },
-            { 'nvim-neotest/nvim-nio' },
         },
         keys = {
             {
@@ -23,16 +22,7 @@ return {
                 silent = true, mode = 'n', desc = 'Dap toggle breakpoint'
             },
             {
-                '\\B',
-                function()
-                    if vim.bo.modifiable then
-                        require('dap').set_breakpoint()
-                    end
-                end,
-                silent = true, mode = 'n', desc = 'Dap set breakpoint'
-            },
-            {
-                '\\lp',
+                '\\l',
                 function()
                     if vim.bo.modifiable then
                         require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))

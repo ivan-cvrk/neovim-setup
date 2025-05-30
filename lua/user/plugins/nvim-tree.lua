@@ -73,15 +73,5 @@ return {
         },
       },
     })
-
-    vim.keymap.set("n", "<leader>tn", require("nvim-tree.api").marks.navigate.next, {
-      desc = "NvimTree go to next bookmark"
-    })
-    vim.keymap.set("n", "<leader>tp", require("nvim-tree.api").marks.navigate.prev, {
-      desc = "NvimTree go to previous bookmark"
-    })
-    vim.keymap.set("n", "<leader>ts", require("nvim-tree.api").marks.navigate.select, {
-      desc = "NvimTree bookmarks select"
-    })
   end,
 }

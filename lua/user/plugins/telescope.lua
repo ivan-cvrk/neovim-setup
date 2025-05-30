@@ -23,7 +23,7 @@ return {
                 silent = true, mode = 'n'
             },
             {
-                '\\l', ':Telescope live_grep<CR>',
+                '\\g', ':Telescope live_grep<CR>',
                 silent = true, mode = 'n'
             },
             {

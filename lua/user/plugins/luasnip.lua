@@ -9,7 +9,7 @@ return {
 
         ls.config.set_config {
             history = true,
-            updateevents = "TextChanged,TextChangedI",
+            update_events = "TextChanged,TextChangedI",
             enable_autosnippets = true,
             ext_opts = {
                 [types.choiceNode] = {
@@ -36,10 +36,9 @@ return {
             end
         end, { desc = "Luasnip change choice" })
 
-
         local load_doc = vim.schedule(function()
             local cachepath = vim.fn.stdpath("cache") .. "/luasnip/docstrings.json"
-            if vim.loop.fs_stat(cachepath) then
+            if vim.uv.fs_stat(cachepath) then
                 ls.load_snippet_docstrings(ls.get_snippets())
             else
                 vim.cmd 'LuaSnipCompileDocs'

@@ -54,19 +54,19 @@ return {
                     --        end, { 'i', 's' }),
                 }),
                 sources = {
+                    { name = 'luasnip' },
                     { name = 'nvim_lsp' },
                     { name = 'path' },
-                    { name = 'luasnip' },
                     { name = 'buffer', keyword_length = 5 }
                 },
                 formatting = {
                     format = lspkind.cmp_format {
                         with_test = true,
                         menu = {
+                            luasnip = '[snip]',
                             nvim_lsp = '[LSP]',
                             nvim_lua = '[api]',
                             path = '[path]',
-                            luasnip = '[snip]',
                             buffer = '[buf]',
                         }
                     }
