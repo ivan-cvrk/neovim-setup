@@ -22,48 +22,50 @@ return {
 
     local lspenhence = require('user.myplugins.lspenhence')
 
-    local on_attach = function(client, bufnr)
-      lspenhence.enhence(client.name, bufnr)
+    vim.api.nvim_create_autocmd('LspAttach', {
+      callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        local bufnr = args.buf
 
-      -- Enable completion triggered by <c-x><c-o>
-      -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+        local bufopts = { noremap = true, silent = true, buffer = bufnr }
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+        vim.keymap.set('n', 'M', vim.lsp.buf.hover, bufopts)
+        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+        vim.keymap.set('n', '<space>m', vim.lsp.buf.signature_help, bufopts)
+        vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+        vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+        vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+        vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+        vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+        vim.api.nvim_set_keymap('n', '<space>wl', '', {
+          callback = print(vim.inspect(vim.lsp.buf.list_workspace_folders())),
+          desc = 'lsp show workspace folders'
+        })
 
-      local bufopts = { noremap = true, silent = true, buffer = bufnr }
-      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-      vim.keymap.set('n', 'M', vim.lsp.buf.hover, bufopts)
-      vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-      vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-      vim.keymap.set('n', '<space>m', vim.lsp.buf.signature_help, bufopts)
-      vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-      vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-      vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-      vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-      vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-      vim.api.nvim_set_keymap('n', '<space>wl', '', {
-        callback = print(vim.inspect(vim.lsp.buf.list_workspace_folders())),
-        desc = 'lsp show workspace folders'
-      })
-
-      if client.supports_method("textDocument/formatting") then
-        vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
-      end
-    end
-
-    -- Server setups
-
-    -- suggest configs on new language servers
-    vim.lsp.config('*', {
-      on_attach = on_attach,
-      capabilities = capabilities,
+        if not client then
+          return
+        end
+        lspenhence.enhence(client.name, bufnr)
+        if client:supports_method("textDocument/formatting") then
+          vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
+        end
+      end,
     })
 
-    local language_servers = { 'clangd' }
+    -- Server setups
+    -- suggest configs on new language servers
+    vim.lsp.config('*', {
+      capabilities = capabilities,
+
+    })
+
+    local language_servers = { 'clangd', 'pyright' }
     for _, ls in ipairs(language_servers) do
       vim.lsp.enable(ls)
       -- enforce my configs on language servers
       vim.lsp.config(ls, {
-        on_attach = on_attach,
         capabilities = capabilities,
       })
     end
