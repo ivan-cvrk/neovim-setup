@@ -1,5 +1,5 @@
 local function format(bufnr)
-    local channel = vim.fn.jobstart({ 'autopep8', '-' }, {
+    local channel = vim.fn.jobstart({ 'autopep8', '--global-config', vim.env.HOME .. "/.config/autopep8.json", '-' }, {
         stdout_buffered = true,
         on_stdout = function(_, data)
             if data then

@@ -26,6 +26,10 @@ function M.toggle_terminal(command)
     vim.cmd('vsplit')
     vim.cmd('term')
 
+    local win = vim.api.nvim_get_current_win()
+    local width = vim.api.nvim_win_get_width(win)
+    vim.api.nvim_win_set_width(win, width - 30)
+
     term_buf = vim.api.nvim_get_current_buf()
   end
 
