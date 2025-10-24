@@ -47,7 +47,7 @@ return {
       view = {
         centralize_selection = true,
         preserve_window_proportions = false,
-        signcolumn = "no",
+        -- signcolumn = "no",
         float = {
           enable = true,
           open_win_config = function()
