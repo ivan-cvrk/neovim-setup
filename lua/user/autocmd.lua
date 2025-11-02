@@ -11,6 +11,7 @@ vim.filetype.add({
         vert = 'glsl',
         frag = 'glsl',
         geom = 'glsl',
+        ixx = 'cpp',
     },
     pattern = {
         ['.*%.env.*'] = 'sh',
