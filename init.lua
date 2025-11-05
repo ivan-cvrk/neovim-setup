@@ -37,10 +37,8 @@ if vim.g.neovide then
 
   -- Helper function for transparency formatting
   local alpha = function()
-    return string.format("%x", math.floor(255 * (vim.g.transparency or 0.8)))
+    return string.format("%x", math.floor(255 * (vim.g.neovide_normal_opacity or 0.5)))
   end
-  vim.g.neovide_transparency = 1.0 -- floating transparency
-  vim.g.transparency = 0.8 -- macos transparency
   vim.g.neovide_background_color = "#0f1117" .. alpha()
 
   vim.g.neovide_floating_shadow = true

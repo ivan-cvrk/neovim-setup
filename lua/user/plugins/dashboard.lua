@@ -33,13 +33,6 @@ return {
                         icon_hl = 'DashboardIcon',
                         desc_hl = 'DashboardLabel',
                     },
---                    {
---                        icon = '  ',
---                        desc = 'Open project ',
---                        action = 'Telescope project',
---                        icon_hl = 'DashboardIcon',
---                        desc_hl = 'DashboardLabel',
---                    },
                     {
                         icon = '  ',
                         desc = 'Recent files ',
