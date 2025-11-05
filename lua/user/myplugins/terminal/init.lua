@@ -56,3 +56,13 @@ function M.add_command(value, callback)
 end
 
 return M
+
+-- Example: Run current python file
+--
+-- file: .nvim/exec.lua
+--
+--local term = require "user.myplugins.terminal"
+--
+--term.add_command("run current", function()
+--  term.toggle_terminal("python3 " .. vim.api.nvim_buf_get_name(0) .. "\n")
+--end)
