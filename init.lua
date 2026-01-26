@@ -20,8 +20,8 @@ require("lazy").setup({
   { import = 'user.plugins.lsp' }
 }, { ui = { title = 'Lazy', border = "rounded" } })
 
+vim.o.guifont = 'FiraCode Nerd Font Mono:h12:e-antialiasing'
 if vim.g.neovide then
-  vim.o.guifont = 'JetBrainsMonoNL Nerd Font:h12:e-antialiasing'
   vim.g.neovide_hide_mouse_when_typing = true
   vim.g.neovide_theme = 'auto'
   vim.g.neovide_cursor_vfx_mode = 'torpedo'
