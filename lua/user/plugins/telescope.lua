@@ -35,10 +35,11 @@ return {
             local telescope = require('telescope')
 
             telescope.setup {
-                defaults = {
+                defaults = require('telescope.themes').get_dropdown {
                     prompt_prefix = ' ',
                     selection_caret = ' ',
                     path_display = { 'smart' },
+                    previewer = false,
                 },
                 pickers = {
                     -- Default configuration for builtin pickers goes here:

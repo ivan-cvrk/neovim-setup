@@ -29,10 +29,22 @@ return {
                     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
                     ['<C-d>'] = cmp.mapping.scroll_docs(4),
                     ['<C-e>'] = cmp.mapping.close(),
-                    ['<C-y>'] = cmp.mapping.confirm {
-                        behavior = cmp.ConfirmBehavior.Insert,
-                        select = true,
-                    },
+                    ['<C-y>'] = function(fallback)
+                        if cmp.visible() then
+                            cmp.mapping.confirm {
+                                behavior = cmp.ConfirmBehavior.Insert,
+                                select = true,
+                            }()
+                        else
+                            local copilot_keys = vim.fn['copilot#Accept']()
+                            if copilot_keys ~= '' then
+                                vim.api.nvim_feedkeys(copilot_keys, 'i', true)
+                            else
+                                fallback()
+                            end
+                        end
+
+                    end,
                     ['<C-Space>'] = cmp.mapping.complete(),
                     --        ['<Tab>'] = cmp.mapping(function(fallback)
                     --            if cmp.visible() then
