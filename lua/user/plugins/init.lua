@@ -22,40 +22,51 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "hrsh7th/nvim-cmp", -- Optional: for completion
+      "ravitemer/codecompanion-history.nvim",
       { "MeanderingProgrammer/render-markdown.nvim", -- Enhanced markdown rendering
-      dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-      ft = { "markdown", "codecompanion" }},
-    },
-    config = function()
-      vim.keymap.set({ "n", "v" }, "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-      vim.keymap.set({ "n", "v" }, "\\a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
+        dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+        ft = { "markdown", "codecompanion" } },
+    }, config = function()
+      vim.keymap.set({ "n", "v" }, "<C-c>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+      vim.keymap.set({ "n", "v" }, "\\c", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
       vim.keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
       -- Expand 'cc' into 'CodeCompanion' in the command line
       vim.cmd([[cab cc CodeCompanion]])
 
       require("codecompanion").setup({
+        adapter = {
+          acp = {
+            gemini_cli = function()
+              return require("codecompanion.adapters").extend("gemini_cli", {
+                defaults = {
+                  auth_method = "oauth-personal",
+                },
+              })
+            end,
+          }
+        },
         interactions = {
           chat = { adapter = "copilot", model = 'gpt-5 mini' },
           inline = { adapter = "copilot", model = 'gpt-5 mini' },
           agent = { adapter = "copilot", model = 'gpt-5 mini' },
           background = {
-              chat = {
-                adapter = { name = "copilot", model = "gpt-5 mini", },
-                callbacks = {
-                  ["on_ready"] = {
-                    actions = {
-                      "interactions.background.builtin.chat_make_title",
-                    },
-                    -- Enable "on_ready" callback which contains the title generation action
-                    enabled = true,
+            chat = {
+              adapter = { name = "copilot", model = "gpt-5 mini", },
+              callbacks = {
+                ["on_ready"] = {
+                  actions = {
+                    "interactions.background.builtin.chat_make_title",
                   },
-                },
-                opts = {
-                  -- Enable background interactions generally
+                  -- Enable "on_ready" callback which contains the title generation action
                   enabled = true,
                 },
               },
+              opts = {
+                -- Enable background interactions generally
+                enabled = true,
+              },
             },
+          },
 
           -- chat = {
           --   -- You can specify an adapter by name and model (both ACP and HTTP)
@@ -65,7 +76,19 @@ return {
           --   },
           -- },
         },
-      })
+        extensions = {
+          history = {
+            enabled = true,
+            opts = {
+              max_items = 100,
+              persist = true,
+              persist_file = vim.fn.stdpath("data") .. "/codecompanion_history.json",
+              picker = "telescope"
+            },
+          },
+        },
+      }
+      )
     end,
   },
 
@@ -78,7 +101,7 @@ return {
     "olimorris/onedarkpro.nvim",
     priority = 1000, -- Ensure it loads first
     config = function()
-      vim.cmd("colorscheme onedark")
+      vim.cmd("colorscheme vaporwave")
     end
   },
 
@@ -86,16 +109,23 @@ return {
     'nvim-lualine/lualine.nvim',
     opts = function()
       local spinner = require('user.myplugins.lualine_spinner')
+
       return {
         options = {
+          theme = 'auto',
           disabled_filetypes = { 'dashboard' },
+          -- Optional: Add separators to help differentiate windows
+          -- component_separators = { left = '│', right = '│' },
+          -- section_separators = { left = '', right = '' },
+          globalstatus = true,
         },
         sections = {
-          lualine_c = { spinner },
-        },
+          lualine_c = {
+            { 'filename', 'codecompanion' },
+          },
+        }
       }
     end,
-    event = 'VeryLazy' -- check if correct
   },
 
   ----------------------

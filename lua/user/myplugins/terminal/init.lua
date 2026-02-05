@@ -12,6 +12,7 @@ function M.toggle_terminal(command)
       if win ~= -1 then
         vim.api.nvim_set_current_win(win)
       else
+        vim.cmd('vsplit')
         vim.api.nvim_set_current_buf(buf)
       end
       vim.cmd('startinsert')
