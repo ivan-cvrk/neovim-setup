@@ -16,7 +16,17 @@ return {
     picker = {
       enabled = true,
       sources = {
+        pickers = {
+          layout = { preset = 'select' }
+        },
         explorer = {
+          win = {
+            list = {
+              keys = {
+                ["<C-n>"] = "cancel"
+              }
+            }
+          },
           layout = {
             preset = "default", -- or omit this
             layout = {
@@ -40,11 +50,13 @@ return {
     dashboard = { enabled = true, },
 
     -- Image
-    image = { enabled = true  },
+    image = { enabled = true },
+
+    -- Explorer
+    explorer     = { enabled = true },
 
     -- Explicitly disable modules we don't need
     bigfile      = { enabled = false },
-    explorer     = { enabled = false },
     indent       = { enabled = false },
     lazygit      = { enabled = false },
     quickfile    = { enabled = false },
@@ -57,13 +69,13 @@ return {
   },
 
   keys = {
-    { "\\f", function() Snacks.picker.files() end,          silent = true, mode = "n", desc = "Find files" },
-    { "\\t", function() Snacks.picker.pickers() end,        silent = true, mode = "n", desc = "All pickers" },
-    { "\\q", function() Snacks.picker.buffers() end,        silent = true, mode = "n", desc = "Buffers" },
+    { "\\f", function() Snacks.picker.files() end, silent = true, mode = "n", desc = "Find files" },
+    { "\\t", function() Snacks.picker.pickers() end, silent = true, mode = "n", desc = "All pickers" },
+    { "\\q", function() Snacks.picker.buffers() end, silent = true, mode = "n", desc = "Buffers" },
     { "\\r", function() Snacks.picker.lsp_references() end, silent = true, mode = "n", desc = "LSP references" },
-    { "\\g", function() Snacks.picker.grep() end,           silent = true, mode = "n", desc = "Live grep" },
-    { "\\o", function() Snacks.picker.recent() end,         silent = true, mode = "n", desc = "Recent files" },
-    { "<C-n>", function() Snacks.picker.explorer() end,     silent = true, mode = "n", desc = "File explorer" },
+    { "\\g", function() Snacks.picker.grep() end, silent = true, mode = "n", desc = "Live grep" },
+    { "\\o", function() Snacks.picker.recent() end, silent = true, mode = "n", desc = "Recent files" },
+    { "<C-n>", function() Snacks.picker.explorer() end, silent = true, mode = "n", desc = "File explorer" },
   },
   config = function(_, opts)
     require("snacks").setup(opts)
