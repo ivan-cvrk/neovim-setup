@@ -21,7 +21,7 @@ return {
       return {
         options = {
           theme = 'auto',
-          disabled_filetypes = { 'dashboard' },
+          disabled_filetypes = { 'snacks_dashboard' },
           -- Optional: Add separators to help differentiate windows
           -- component_separators = { left = '│', right = '│' },
           -- section_separators = { left = '', right = '' },

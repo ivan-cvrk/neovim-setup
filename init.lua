@@ -33,7 +33,7 @@ if vim.g.neovide then
   vim.g.neovide_floating_blur_amount_x = 3.0
   vim.g.neovide_floating_blur_amount_y = 3.0
 
-  vim.api.nvim_set_option_value('winblend', 20, {scope = 'global'})
+  vim.api.nvim_set_option_value('winblend', 20, { scope = 'global' })
 
   -- Helper function for transparency formatting
   local alpha = function()
