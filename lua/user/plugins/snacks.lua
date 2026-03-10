@@ -1,5 +1,8 @@
 return {
   "folke/snacks.nvim",
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+  },
   priority = 1000,
   lazy = false,
   ---@type snacks.Config
@@ -12,6 +15,18 @@ return {
     -- Picker (replaces vim.ui.select) — used by opencode's select(), select_session(), select_server()
     picker = {
       enabled = true,
+      sources = {
+        explorer = {
+          layout = {
+            preset = "default", -- or omit this
+            layout = {
+              width = 0.6,
+              height = 0.7,
+              zindex = 50,
+            },
+          },
+        },
+      }
     },
 
     -- Floating notifications — replaces vim.notify
@@ -22,9 +37,10 @@ return {
     },
 
     -- Dashboard
-    dashboard = {
-      enabled = true,
-    },
+    dashboard = { enabled = true, },
+
+    -- Image
+    image = { enabled = true  },
 
     -- Explicitly disable modules we don't need
     bigfile      = { enabled = false },
@@ -47,6 +63,7 @@ return {
     { "\\r", function() Snacks.picker.lsp_references() end, silent = true, mode = "n", desc = "LSP references" },
     { "\\g", function() Snacks.picker.grep() end,           silent = true, mode = "n", desc = "Live grep" },
     { "\\o", function() Snacks.picker.recent() end,         silent = true, mode = "n", desc = "Recent files" },
+    { "<C-n>", function() Snacks.picker.explorer() end,     silent = true, mode = "n", desc = "File explorer" },
   },
   config = function(_, opts)
     require("snacks").setup(opts)
