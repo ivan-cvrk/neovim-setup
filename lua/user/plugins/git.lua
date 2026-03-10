@@ -1,20 +1,21 @@
 return {
   {
     'lewis6991/gitsigns.nvim',
+    dependencies = { "folke/snacks.nvim" },
     config = function()
-      require('gitsigns').setup{
+      require('gitsigns').setup {
         on_attach = function(bufnr)
           local gitsigns = require('gitsigns')
 
           local function map(mode, l, r, opts)
             opts = opts or {}
-            vim.api.nvim_buf_set_keymap(bufnr ,mode, l, r, opts)
+            vim.api.nvim_buf_set_keymap(bufnr, mode, l, r, opts)
           end
 
           -- Navigation
           map('n', ']c', '', { desc = 'Next git hunk', callback = function()
             if vim.wo.diff then
-              vim.cmd.normal({']c', bang = true})
+              vim.cmd.normal({ ']c', bang = true })
             else
               gitsigns.nav_hunk('next')
             end
@@ -22,7 +23,7 @@ return {
 
           map('n', '[c', '', { desc = 'Previous git hunk', callback = function()
             if vim.wo.diff then
-              vim.cmd.normal({'[c', bang = true})
+              vim.cmd.normal({ '[c', bang = true })
             else
               gitsigns.nav_hunk('prev')
             end
@@ -66,6 +67,41 @@ return {
           -- map({'o', 'x'}, 'ih', '', { desc = 'Select hunk', callback = gitsigns.select_hunk })
         end
       }
+
+      local function git_actions()
+        local gs = require("gitsigns")
+
+        local actions = {
+          { label = "Stage hunk", fn = gs.stage_hunk },
+          { label = "Reset hunk", fn = gs.reset_hunk },
+          { label = "Preview hunk", fn = gs.preview_hunk },
+          { label = "Preview hunk inline", fn = gs.preview_hunk_inline },
+          { label = "Stage buffer", fn = gs.stage_buffer },
+          { label = "Reset buffer", fn = gs.reset_buffer },
+          { label = "Blame line", fn = function()
+            gs.blame_line({ full = true })
+          end },
+          { label = "Diff this", fn = gs.diffthis },
+          { label = "Diff this (~)", fn = function()
+            gs.diffthis("~")
+          end },
+          { label = "Toggle blame", fn = gs.toggle_current_line_blame },
+          { label = "Toggle word diff", fn = gs.toggle_word_diff },
+        }
+
+        vim.ui.select(actions, {
+          prompt = "Git actions",
+          format_item = function(item)
+            return item.label
+          end,
+        }, function(choice)
+          if choice then
+            choice.fn()
+          end
+        end)
+      end
+
+      vim.keymap.set("n", "\\h", git_actions, { desc = "Git hunk actions" })
     end
   },
 
