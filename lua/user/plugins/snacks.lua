@@ -52,15 +52,22 @@ return {
     dashboard = { enabled = true, },
 
     -- Image
+    styles = {
+      snacks_image = {
+        relative = "editor",
+        border = "rounded",
+        width = 0.9,
+        height = 0.9,
+      }
+    },
     image = {
       enabled = true,
       doc = {
         enabled = true,
         inline = true,
+        max_width = 140,
+        max_height = 70,
       },
-      hover = {
-        placement = "center",
-      }
     },
 
     -- Explorer
@@ -104,104 +111,38 @@ return {
         })
       end,
     })
+    local hover_key_ns = vim.api.nvim_create_namespace("SnacksImageHoverKey")
 
-
-    -- Mermaid previews
-    local mermaid_preview = vim.api.nvim_create_augroup("MermaidPreview", { clear = true })
-
-    local state = {
-      active = false,
-    }
-
-    local function in_mermaid_block(buf, row)
-      local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
-      local i = row + 1 -- Lua 1-based for easier scanning
-
-      local start_line = nil
-      local fence_lang = nil
-
-      -- find nearest opening fence above cursor
-      for l = i, 1, -1 do
-        local line = lines[l]
-        local lang = line:match("^```(%S+)%s*$")
-        if lang then
-          start_line = l
-          fence_lang = lang
-          break
-        end
-        if line:match("^```%s*$") then
-          break
-        end
-      end
-
-      if not start_line or fence_lang ~= "mermaid" then
-        return false
-      end
-
-      -- find closing fence below opening
-      for l = start_line + 1, #lines do
-        if lines[l]:match("^```%s*$") then
-          return i > start_line and i < l
-        end
-      end
-
-      return false
-    end
-
-    local function open_centered_mermaid_hover()
-      if state.active then
-        return
-      end
-      state.active = true
-
-      vim.schedule(function()
-        pcall(function()
-          Snacks.image.hover({
-            -- big centered preview
-            relative = "editor",
-            width = math.floor(vim.o.columns * 0.75),
-            height = math.floor(vim.o.lines * 0.75),
-            pos = {
-              math.floor(vim.o.lines * 0.125),
-              math.floor(vim.o.columns * 0.125),
-            },
-          })
-        end)
+    local function close_preview()
+      vim.on_key(nil, hover_key_ns)
+      pcall(function()
+        Snacks.image.doc.hover_close()
       end)
     end
 
-    local function close_mermaid_hover()
-      state.active = false
-      for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
-        local ok, cfg = pcall(vim.api.nvim_win_get_config, win)
-        if ok and cfg and cfg.relative ~= "" then
-          local ok_buf, buf = pcall(vim.api.nvim_win_get_buf, win)
-          if ok_buf and vim.bo[buf].filetype == "snacks_image" then
-            pcall(vim.api.nvim_win_close, win, true)
-          end
+    local function close_on_next_keypress()
+      vim.on_key(nil, hover_key_ns)
+      local armed = false
+      vim.on_key(function()
+        if armed then
+          return
         end
-      end
+        armed = true
+        vim.schedule(close_preview)
+      end, hover_key_ns)
     end
 
-    vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI", "BufEnter" }, {
-      group = mermaid_preview,
-      pattern = { "*.md", "*.markdown" },
-      callback = function(args)
-        local row = vim.api.nvim_win_get_cursor(0)[1] - 1
-        if in_mermaid_block(args.buf, row) then
-          open_centered_mermaid_hover()
-        else
-          close_mermaid_hover()
-        end
-      end,
-    })
+    local function open_large_hover_once()
+      close_preview()
+      pcall(function()
+        Snacks.image.hover()
+      end)
+      close_on_next_keypress()
+    end
 
-    vim.api.nvim_create_autocmd({ "BufLeave", "WinLeave" }, {
-      group = mermaid_preview,
-      callback = function()
-        close_mermaid_hover()
-      end,
+    vim.keymap.set("n", "\\i", open_large_hover_once, {
+      silent = true,
+      desc = "Large image hover (close on next key)",
     })
-
   end,
 }
