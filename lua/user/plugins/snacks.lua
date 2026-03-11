@@ -52,21 +52,13 @@ return {
     dashboard = { enabled = true, },
 
     -- Image
-    styles = {
-      snacks_image = {
-        relative = "editor",
-        border = "rounded",
-        width = 0.9,
-        height = 0.9,
-      }
-    },
     image = {
       enabled = true,
       doc = {
         enabled = true,
-        inline = true,
-        max_width = 140,
-        max_height = 70,
+        float = true,
+        max_width = math.floor(vim.o.columns * 0.75),
+        max_height = math.floor(vim.o.lines * 0.75),
       },
     },
 
