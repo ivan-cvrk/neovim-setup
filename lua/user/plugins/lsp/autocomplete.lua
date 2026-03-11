@@ -54,7 +54,7 @@ return {
         preset = 'default',
       },
       fuzzy = {
-        implementation = 'prefer_rust_with_warning',
+        implementation = 'lua',
       },
     },
     opts_extend = { 'sources.default' },
