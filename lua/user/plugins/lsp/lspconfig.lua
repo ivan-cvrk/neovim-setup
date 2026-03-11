@@ -1,17 +1,16 @@
 return {
   'neovim/nvim-lspconfig',
-  dependencies = 'hrsh7th/cmp-nvim-lsp',
+  dependencies = {
+    'saghen/blink.cmp',
+    'folke/lazydev.nvim',
+  },
   event = { 'BufReadPre', 'BufNewFile' },
   config = function()
-    local cmp_nvim_lsp = require 'cmp_nvim_lsp'
-
-    -- Add additional capabilities supported by nvim-cmp
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+    capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
 
     local opts = { noremap = true, silent = true }
-    vim.api.nvim_set_keymap('n', '<space>dd', '', {
-      callback = function() vim.diagnostic.enable(false) end,
+    vim.keymap.set('n', '<space>dd', function() vim.diagnostic.enable(false) end, {
       desc = 'disable diagnostic'
     })
     vim.keymap.set('n', '<space>d', vim.diagnostic.enable, opts)
@@ -38,10 +37,11 @@ return {
         vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
         vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
         vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-        vim.api.nvim_set_keymap('n', '<space>wl', '', {
-          callback = print(vim.inspect(vim.lsp.buf.list_workspace_folders())),
+        vim.keymap.set('n', '<space>wl', function()
+          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end, vim.tbl_extend('force', bufopts, {
           desc = 'lsp show workspace folders'
-        })
+        }))
 
         if not client then
           return
@@ -69,44 +69,15 @@ return {
       })
     end
 
-    -- Special requirements, manual setup
-
+    -- Lua LS setup (workspace/library handled by lazydev.nvim)
     vim.lsp.enable('lua_ls')
     vim.lsp.config('lua_ls', {
-      on_init = function(client)
-        if client.workspace_folders then
-          local path = client.workspace_folders[1].name
-          if path ~= vim.fn.stdpath('config') and
-              (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc')) then
-            return
-          end
-        end
-
-        client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-          runtime = {
-            -- Tell the language server which version of Lua you're using
-            -- (most likely LuaJIT in the case of Neovim)
-            version = 'LuaJIT'
-          },
-          -- Make the server aware of Neovim runtime files
-          workspace = {
-            checkThirdParty = false,
-            library = {
-              vim.env.VIMRUNTIME,
-              -- Depending on the usage, you might want to add additional paths here.
-              -- "${3rd}/luv/library",
-              -- "${3rd}/busted/library",
-            }
-            -- or pull in all of 'runtimepath'. NOTE: this is a lot slower and will cause issues when working on your own configuration (see https://github.com/neovim/nvim-lspconfig/issues/3189)
-            -- library = vim.api.nvim_get_runtime_file("", true)
-          }
-        })
-      end,
       settings = {
-        Lua = {}
+        Lua = {
+          telemetry = { enable = false },
+        }
       },
       capabilities = capabilities,
-      on_attach = on_attach,
     })
   end
 }
