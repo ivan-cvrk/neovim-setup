@@ -4,15 +4,6 @@ local function map(m, k, v)
     vim.api.nvim_set_keymap(m, k, v, { silent = true, noremap = true })
 end
 
-
--- Fix n and N. Keeping cursor in center
-map('n', 'n', 'nzz')
-map('n', 'N', 'Nzz')
-
--- Mimic shell movements
-map('i', '<C-E>', '<ESC>A')
-map('i', '<C-A>', '<ESC>I')
-
 -- Escape terminal to normal mode
 map('t', '<Esc>', '<C-\\><C-n>')
 

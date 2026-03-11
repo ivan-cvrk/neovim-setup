@@ -62,22 +62,32 @@ return {
 
     local language_servers = { 'clangd', 'pyright' }
     for _, ls in ipairs(language_servers) do
-      vim.lsp.enable(ls)
       -- enforce my configs on language servers
       vim.lsp.config(ls, {
         capabilities = capabilities,
       })
+      vim.lsp.enable(ls)
     end
 
     -- Lua LS setup (workspace/library handled by lazydev.nvim)
-    vim.lsp.enable('lua_ls')
     vim.lsp.config('lua_ls', {
       settings = {
         Lua = {
+          diagnostics = {
+            globals = { 'vim' },
+          },
+          workspace = {
+            checkThirdParty = false,
+            library = vim.api.nvim_get_runtime_file('', true),
+          },
+          runtime = {
+            version = 'LuaJIT',
+          },
           telemetry = { enable = false },
         }
       },
       capabilities = capabilities,
     })
+    vim.lsp.enable('lua_ls')
   end
 }
