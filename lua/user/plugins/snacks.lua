@@ -20,6 +20,8 @@ return {
           layout = { preset = 'select' }
         },
         explorer = {
+          auto_close = true,
+          jump = { close = true },
           win = {
             list = {
               keys = {
