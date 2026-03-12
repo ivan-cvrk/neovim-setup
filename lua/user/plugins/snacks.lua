@@ -56,9 +56,10 @@ return {
       enabled = true,
       doc = {
         enabled = true,
-        float = true,
-        max_width = math.floor(vim.o.columns * 0.75),
-        max_height = math.floor(vim.o.lines * 0.75),
+        inline = false,
+        float = false,
+        max_width = math.floor(vim.o.columns * 0.95),
+        max_height = math.floor(vim.o.lines * 0.95),
       },
     },
 
