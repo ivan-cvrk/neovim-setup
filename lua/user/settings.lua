@@ -82,3 +82,6 @@ o.splitbelow = true
 -- Map <leader> to space
 g.mapleader = ' '
 g.maplocalleader = ' '
+
+vim.opt.grepprg = "rg --vimgrep --smart-case"
+vim.opt.grepformat = "%f:%l:%c:%m"
