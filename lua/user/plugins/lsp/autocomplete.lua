@@ -28,6 +28,8 @@ return {
           end,
           'fallback',
         },
+        ['<C-n>'] = { 'select_next', 'fallback' },
+        ['<C-p>'] = { 'select_prev', 'fallback' },
       },
       appearance = {
         nerd_font_variant = 'mono',
