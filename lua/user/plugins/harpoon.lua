@@ -67,7 +67,7 @@ return {
       pattern = '*',
       callback = function(opt)
         if vim.bo.filetype ~= 'qf' then
-          vim.api.nvim_buf_set_keymap(opt.buf, 'n', '<leader>a', '',
+          vim.api.nvim_buf_set_keymap(opt.buf, 'n', '<leader>m', '',
             {
               callback = function() harpoon:list():add() end,
               desc = 'Harpoon mark file'
@@ -80,7 +80,7 @@ return {
           vim.api.nvim_buf_set_keymap(opt.buf, 'n', '<C-j>', '',
             {
               callback = function() harpoon:list():select(2) end,
-              desc = 'Harpoon jump first'
+              desc = 'Harpoon jump second'
             })
           vim.api.nvim_buf_set_keymap(opt.buf, 'n', '<C-m>', '',
             {
