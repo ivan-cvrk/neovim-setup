@@ -8,6 +8,9 @@ return {
         external_terminal_cmd = "ghostty --window-save-state=never -e %s",
       },
     },
+    diff_opts = {
+      open_in_new_tab = true,
+    },
   },
   keys = {
     { "<leader>as", "<cmd>ClaudeCodeSend<cr>",       desc = "Send to Claude", mode = "v" },

@@ -27,13 +27,6 @@ return {
           -- section_separators = { left = '', right = '' },
           globalstatus = true,
         },
-        sections = {
-          lualine_z = {
-            {
-              require("opencode").statusline,
-            },
-          }
-        }
       }
     end,
   },
