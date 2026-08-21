@@ -20,6 +20,7 @@ return {
           layout = { preset = 'select' }
         },
         explorer = {
+          ignored = true,
           auto_close = true,
           jump = { close = true },
           win = {

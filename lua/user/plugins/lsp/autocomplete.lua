@@ -45,11 +45,20 @@ return {
       },
       sources = {
         default = { 'lazydev', 'lsp', 'path', 'buffer' },
+        per_filetype = {
+          sql = { 'dadbod', 'buffer' },
+          mysql = { 'dadbod', 'buffer' },
+          plsql = { 'dadbod', 'buffer' },
+        },
         providers = {
           lazydev = {
             name = 'LazyDev',
             module = 'lazydev.integrations.blink',
             score_offset = 100,
+          },
+          dadbod = {
+            name = 'Dadbod',
+            module = 'vim_dadbod_completion.blink',
           },
         },
       },

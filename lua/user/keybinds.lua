@@ -8,4 +8,3 @@ end
 map('t', '<Esc>', '<C-\\><C-n>')
 
 vim.keymap.set('n', '\\x', execdir.execute_nvim_files_in_dir, { remap = false })
-
